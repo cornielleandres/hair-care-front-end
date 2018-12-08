@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+// Components
+import {
+	Header,
+} from './components/index.js';
+
+// Action creators
+import {
+	getSanityCheck,
+} from './store/actions/index.js';
+
+const StyledApp = styled.div`
+	background-color: #c7dbf4;
+	min-height: 100vh;
+
+	.message {
+		text-align: center;
+	}
+`;
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+	componentDidMount = () => this.props.getSanityCheck();
 
-export default App;
+	render() {
+		const { message } = this.props;
+		return (
+			<StyledApp>
+				<Header />
+				<p className = 'message'>{ message }</p>
+			</StyledApp>
+		);
+	}
+};
+
+const mapStateToProps = state => ({
+	message: state.message,
+});
+
+export default connect(mapStateToProps, { getSanityCheck })(App);
