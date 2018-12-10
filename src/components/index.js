@@ -1,5 +1,3 @@
-import Header from './Header.js';
+import Header from "./Header.js";
 
-export {
-	Header,
-};
+export { Header };

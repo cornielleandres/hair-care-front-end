@@ -4,11 +4,12 @@ class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
-      name: "",
-      storeName: "",
-      contactNumber: "",
+      email: null,
+      password: null,
+      name: null,
+      storeName: null,
+      contactNumber: null,
+      Location: null,
       isStylist: true
     };
   }
@@ -23,6 +24,7 @@ class SignUpForm extends Component {
             <input type="text" placeholder="Name" />
             <input type="text" placeholder="Store name" />
             <input type="text" placeholder="Contact number" />
+            <input type="text" placeholder="Store location" />
             <button>Sign Up</button>
           </form>
         </div>
