@@ -8,7 +8,8 @@ class SignUpForm extends Component {
       password: "",
       name: "",
       storeName: "",
-      contactNumber: ""
+      contactNumber: "",
+      isStylist: false
     };
   }
 
@@ -18,9 +19,7 @@ class SignUpForm extends Component {
         <form action="">
           <input type="email" placeholder="Email" />
           <input type="pasword" placeholder="Password" />
-          <input type="text" placeholder="Name" />
-          <input type="text" placeholder="Store name" />
-          <input type="text" placeholder="Contact number" />
+          <input type="text" placeholder="What should we call you?" />
           <button>Sign Up</button>
         </form>
       </div>
