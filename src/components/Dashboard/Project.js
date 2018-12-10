@@ -5,7 +5,7 @@ const Project = ({ project }) => {
     <div className="container">
       <img src="" alt="project picture" />
       <p>likes</p>
-      <p>comments</p>
+      <Comments />
     </div>
   );
 };
