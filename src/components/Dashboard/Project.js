@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Comments from "./Comments";
 const Project = ({ project }) => {
   return (
     <div className="container">
@@ -9,4 +9,4 @@ const Project = ({ project }) => {
     </div>
   );
 };
-export default Dashboard;
+export default Project;

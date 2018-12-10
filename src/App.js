@@ -6,6 +6,13 @@ import { Route } from "react-router-dom";
 // Components
 import { Header } from "./components/index.js";
 import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import SignUpForm from "./components/Forms/SignUpForm";
+import UserSignUpForm from "./components/Forms/UserSignUpForm";
+import StylistSignUpForm from "./components/Forms/StylistSignUpForm";
+import LogInForm from "./components/Forms/LogInForm.js";
+import Dashboard from "./components/Dashboard/Dashboard.js";
+
 // Action creators
 import { getSanityCheck } from "./store/actions/index.js";
 
@@ -27,7 +34,10 @@ class App extends Component {
       <StyledApp>
         <Header />
         <NavBar />
-        <p className="message">{message}</p>
+        <Route exact path="/" component={Home} />
+        <Route path="/logIn" component={LogInForm} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/signUp" component={SignUpForm} />
       </StyledApp>
     );
   }

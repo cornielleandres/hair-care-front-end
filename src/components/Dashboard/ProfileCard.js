@@ -3,7 +3,7 @@ import React, { Component } from "react";
 const ProfileCard = ({ stylist }) => {
   return (
     <div>
-      <img>picture</img>
+      <h4>picture</h4>
       <h4>name</h4>
       <h4>age</h4>
       <h4>location</h4>

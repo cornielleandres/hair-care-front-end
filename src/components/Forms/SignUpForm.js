@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { NavLink } from "react-router-dom";
 class SignUpForm extends Component {
   constructor() {
     super();
@@ -10,7 +10,7 @@ class SignUpForm extends Component {
       storeName: null,
       contactNumber: null,
       Location: null,
-      isStylist: true
+      isStylist: false
     };
   }
 
