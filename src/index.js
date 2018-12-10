@@ -8,8 +8,9 @@ import * as serviceWorker from './serviceWorker';
 // CSS reset
 import './index.css';
 
-// Component
+// Components
 import App from './App';
+import { Auth, Login } from './components/index.js'
 
 // MiddleWare
 import thunk from 'redux-thunk';
@@ -25,10 +26,12 @@ if (process.env.NODE_ENV === 'development') {
 	store = createStore(UserReducer, applyMiddleware(thunk));
 }
 
+const AuthComp = Auth(App)(Login);
+
 ReactDOM.render(
 	<Provider store = { store }>
 		<Router>
-			<Route path = '/' component = { App } />
+			<Route path = '/' component = { AuthComp } />
 		</Router>
 	</Provider>,
 	document.getElementById('root')

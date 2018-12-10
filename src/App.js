@@ -25,11 +25,13 @@ class App extends Component {
 	componentDidMount = () => this.props.getSanityCheck();
 
 	render() {
-		const { message } = this.props;
+		const { message, handleLogout } = this.props;
 		return (
 			<StyledApp>
 				<Header />
 				<p className = 'message'>{ message }</p>
+
+				<button onClick = { handleLogout }>Logout</button>
 			</StyledApp>
 		);
 	}
