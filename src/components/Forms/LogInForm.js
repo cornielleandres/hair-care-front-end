@@ -9,17 +9,38 @@ class LogInForm extends Component {
       password: ""
     };
   }
-
+  handleInputChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+  handleSumbmit = e => {
+    e.preventDefault();
+    console.log("sadf");
+  };
   render() {
     return (
       <div className="box">
-        <form action="">
-          <input type="email" placeholder="Enter email" />
-          <input type="pasword" placeholder="Enter password" />
-          <Link to="/">Log in</Link>
-          <Link to="/">Sign in as a guest</Link>
+        <form onSubmit={this.handleSumbmit}>
+          <input
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+          />
+          <input
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+          />
+          <button type="submit">Log In</button>
+          <Link to="/">Log In As Guest</Link>
         </form>
-        <Link to="/signUp">Click here to Sign Up</Link>
+        <Link to="/signUp">Click Here To Sign Up</Link>
       </div>
     );
   }

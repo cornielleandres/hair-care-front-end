@@ -42,7 +42,7 @@ class App extends Component {
         <Header />
         <NavBar />
         <Route exact path="/" render={() => <Home />} />
-        <Route path="/logIn/:userType" render={() => <LogInForm />} />
+        <Route path="/logIn" render={() => <LogInForm />} />
         <Route path="/:userType/dashboard" render={() => <Dashboard />} />
         <Route path="/signUp" render={() => <SignUpForm />} />
       </StyledApp>
