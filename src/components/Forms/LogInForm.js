@@ -10,7 +10,7 @@ class LogInForm extends Component {
     };
   }
   handleInputChange = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -33,6 +33,7 @@ class LogInForm extends Component {
             name="email"
             value={this.state.email}
             onChange={this.handleInputChange}
+            required
           />
           <input
             type="password"
@@ -40,6 +41,7 @@ class LogInForm extends Component {
             name="password"
             value={this.state.password}
             onChange={this.handleInputChange}
+            required
           />
           <button type="submit">Log In</button>
           <Link to="/home">Log In As Guest</Link>

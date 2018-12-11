@@ -10,8 +10,6 @@ import Home from "./components/Home";
 import SignUpForm from "./components/Forms/SignUpForm";
 import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
-import MyDashboard from "./components/Dashboard/MyDashboard";
-import ProfileCard from "./components/Dashboard/ProfileCard";
 import StylistProfile from "./components/Dashboard/StylistProfile";
 // Action creators
 import { getStylists } from "./store/actions/index.js";

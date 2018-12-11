@@ -1,5 +1,5 @@
 import React from "react";
-
+import ProjectList from "./ProjectList";
 const StylistProfile = props => {
   const id = props.match.params.id;
 
@@ -17,6 +17,7 @@ const StylistProfile = props => {
         <h4>description</h4>
         <h4>{stylist.social_network_link}</h4>
       </div>
+      <ProjectList />
     </div>
   );
 };

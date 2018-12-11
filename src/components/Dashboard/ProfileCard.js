@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 const ProfileCard = props => {
   // console.log("card", props);
   const { stylist } = props;

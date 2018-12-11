@@ -8,8 +8,8 @@ const ProfileCardList = props => {
   return (
     <div>
       {stylists.map((stylist, i) => (
-        <Link to={`/stylists/${stylist.id}`}>
-          <ProfileCard key={i} stylist={stylist} />
+        <Link to={`/stylists/${stylist.id}`} key={i}>
+          <ProfileCard stylist={stylist} />
         </Link>
       ))}
     </div>
