@@ -9,7 +9,7 @@ const ProfileCard = ({ stylist }) => {
       <h4>location</h4>
       <h4>contact number</h4>
       <h4>average cost</h4>
-      <textarea>description</textarea>
+      <textarea placeholder="describe your store" />
       <h4>links to social media</h4>
     </div>
   );

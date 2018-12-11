@@ -8,13 +8,11 @@ import { Header } from "./components/index.js";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import SignUpForm from "./components/Forms/SignUpForm";
-import UserSignUpForm from "./components/Forms/UserSignUpForm";
-import StylistSignUpForm from "./components/Forms/StylistSignUpForm";
 import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 
 // Action creators
-import { getSanityCheck } from "./store/actions/index.js";
+import { getStylists } from "./store/actions/index.js";
 
 const StyledApp = styled.div`
   background-color: #c7dbf4;
@@ -33,10 +31,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount = () => this.props.getSanityCheck();
-
   render() {
-    const { message } = this.props;
     return (
       <StyledApp>
         <Header />
@@ -56,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSanityCheck }
+  { getStylists }
 )(App);

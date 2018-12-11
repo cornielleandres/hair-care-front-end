@@ -17,7 +17,11 @@ class LogInForm extends Component {
   };
   handleSumbmit = e => {
     e.preventDefault();
-    console.log("sadf");
+    console.log("sent to backend");
+    this.setState({
+      email: "",
+      password: ""
+    });
   };
   render() {
     return (
