@@ -36,15 +36,17 @@ class App extends Component {
   componentDidMount = () => this.props.getSanityCheck();
 
   render() {
-    const { message } = this.props;
     return (
       <StyledApp>
         <Header />
         <NavBar />
-        <Route exact path="/" render={() => <Home />} />
-        <Route path="/logIn/:userType" render={() => <LogInForm />} />
-        <Route path="/:userType/dashboard" render={() => <Dashboard />} />
-        <Route path="/signUp" render={() => <SignUpForm />} />
+        <Route exact path="/home" render={props => <Home {...props} />} />
+        <Route path="/logIn" render={props => <LogInForm {...props} />} />
+        <Route
+          path="/:userType/dashboard"
+          render={props => <Dashboard {...props} />}
+        />
+        <Route path="/signUp" render={props => <SignUpForm {...props} />} />
       </StyledApp>
     );
   }

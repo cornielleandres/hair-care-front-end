@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
+  // todo = conditional rendering due to usertype
   return (
     <nav className="container">
       <div className="box">
