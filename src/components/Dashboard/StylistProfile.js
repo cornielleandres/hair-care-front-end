@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-const ProfileCard = props => {
-  // console.log("card", props);
-  const { stylist } = props;
-  // console.log("individual", props.stylists);
+import React from "react";
+
+const StylistProfile = props => {
+  const id = props.match.params.id;
+
+  const stylist = props.stylists.find(stylist => `${stylist.id}` === id);
+  console.log("each", stylist);
   return (
     <div className="box">
       <div>
@@ -19,4 +21,4 @@ const ProfileCard = props => {
   );
 };
 
-export default ProfileCard;
+export default StylistProfile;

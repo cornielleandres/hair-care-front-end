@@ -5,7 +5,7 @@ const NavBar = () => {
     <nav className="container">
       <div className="box">
         <NavLink to="/signup"> SIGN UP</NavLink>
-        <NavLink to="/mydashboard"> MY DASHBOARD</NavLink>
+        <NavLink to="/dashboard">DASHBOARD</NavLink>
         <NavLink to="/"> LOG OUT</NavLink>
       </div>
     </nav>
