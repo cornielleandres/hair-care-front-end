@@ -26,6 +26,13 @@ const StyledApp = styled.div`
 `;
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      credentials: []
+    };
+  }
+
   componentDidMount = () => this.props.getSanityCheck();
 
   render() {
@@ -34,10 +41,10 @@ class App extends Component {
       <StyledApp>
         <Header />
         <NavBar />
-        <Route exact path="/" component={Home} />
-        <Route path="/logIn" component={LogInForm} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/signUp" component={SignUpForm} />
+        <Route exact path="/" render={() => <Home />} />
+        <Route path="/logIn/:userType" render={() => <LogInForm />} />
+        <Route path="/:userType/dashboard" render={() => <Dashboard />} />
+        <Route path="/signUp" render={() => <SignUpForm />} />
       </StyledApp>
     );
   }

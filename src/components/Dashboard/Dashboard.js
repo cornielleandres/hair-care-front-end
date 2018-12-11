@@ -1,18 +1,11 @@
-import React, { Component } from "react";
-import ProfileCard from "./ProfileCard";
-import ProjectList from "./ProjectList";
-class Dashboard extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-  render() {
-    return (
-      <div className="container">
-        <ProfileCard />
-        <ProjectList />
-      </div>
-    );
-  }
-}
+import React from "react";
+import ProfileCardList from "./ProfileCardList";
+const Dashboard = props => {
+  return (
+    <div className="container">
+      <ProfileCardList />
+    </div>
+  );
+};
+
 export default Dashboard;

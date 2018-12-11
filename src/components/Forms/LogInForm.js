@@ -17,6 +17,7 @@ class LogInForm extends Component {
           <input type="email" placeholder="Enter email" />
           <input type="pasword" placeholder="Enter password" />
           <Link to="/">Log in</Link>
+          <Link to="/">Sign in as a guest</Link>
         </form>
         <Link to="/signUp">Click here to Sign Up</Link>
       </div>
