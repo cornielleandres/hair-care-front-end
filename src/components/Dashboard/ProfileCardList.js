@@ -4,7 +4,7 @@ import ProfileCard from "./ProfileCard";
 const ProfileCardList = props => {
   return (
     <div>
-      <ProfileCard />
+      {props.stylists.map((stylist, i) => <ProfileCard key = {i} stylist = {stylist} />)}
     </div>
   );
 };

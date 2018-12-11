@@ -14,7 +14,7 @@ import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 
 // Action creators
-import { getSanityCheck } from "./store/actions/index.js";
+import { getStylists } from "./store/actions/index.js";
 
 const StyledApp = styled.div`
   background-color: #c7dbf4;
@@ -33,7 +33,9 @@ class App extends Component {
     };
   }
 
-  componentDidMount = () => this.props.getSanityCheck();
+  // componentDidMount() {
+  //   console.log('app')
+  // }
 
   render() {
     const { message } = this.props;
@@ -56,5 +58,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSanityCheck }
+  { getStylists }
 )(App);
