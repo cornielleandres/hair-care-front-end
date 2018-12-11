@@ -1,10 +1,12 @@
 import React from "react";
 import ProfileCard from "./ProfileCard";
 
-const ProfileCardList = props => {
+const ProfileCardList = ({ stylists }) => {
   return (
     <div>
-      <ProfileCard />
+      {stylists.map((stylist, i) => (
+        <ProfileCard key={i} stylist={stylist} />
+      ))}
     </div>
   );
 };

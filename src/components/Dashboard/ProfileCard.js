@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 
 const ProfileCard = ({ stylist }) => {
+  // console.log("card", stylist);
   return (
-    <div>
+    <div className="box">
       <h4>picture</h4>
-      <h4>name</h4>
-      <h4>age</h4>
-      <h4>location</h4>
-      <h4>contact number</h4>
-      <h4>average cost</h4>
+      <h4>{stylist.first_name}</h4>
+      <h4>{stylist.address}</h4>
+      <h4>{stylist.phone_number}</h4>
+      <h4>{stylist.average_cost}</h4>
+      <h4>{stylist.rating}</h4>
+
       <textarea placeholder="describe your store" />
-      <h4>links to social media</h4>
+      <h4>{stylist.social_network_link}</h4>
     </div>
   );
 };

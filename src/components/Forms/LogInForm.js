@@ -42,9 +42,9 @@ class LogInForm extends Component {
             onChange={this.handleInputChange}
           />
           <button type="submit">Log In</button>
-          <Link to="/">Log In As Guest</Link>
+          <Link to="/home">Log In As Guest</Link>
         </form>
-        <Link to="/signUp">Click Here To Sign Up</Link>
+        <Link to="/signup">Click Here To Sign Up</Link>
       </div>
     );
   }

@@ -4,12 +4,12 @@ class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: null,
-      password: null,
-      name: null,
-      storeName: null,
-      contactNumber: null,
-      location: null,
+      email: "",
+      password: "",
+      name: "",
+      storeName: "",
+      contactNumber: "",
+      location: "",
       isStylist: false
     };
   }

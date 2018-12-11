@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Dashboard from "./Dashboard/Dashboard";
-
+import MyDashboard from "./Dashboard/MyDashboard";
 import { connect } from "react-redux";
 
 //action creators
@@ -9,22 +9,26 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      stylists: []
+      isStylist: false
     };
   }
   componentDidMount() {
+    // console.log("cdm home", this.props);
     this.props.getStylists();
   }
   render() {
-    return <Dashboard />;
+    return this.state.isStylist ? (
+      <MyDashboard {...this.props} />
+    ) : (
+      <Dashboard {...this.props} />
+    );
   }
 }
-const mapStateToProps = state => (
-  console.log("STP", state),
-  {
+const mapStateToProps = state =>
+  // console.log("stp", state),
+  ({
     stylists: state.stylists
-  }
-);
+  });
 
 export default connect(
   mapStateToProps,

@@ -12,7 +12,6 @@ export const getStylists = () => dispatch => {
   axios
     .get(URL)
     .then(res => {
-      console.log("***", res);
       dispatch({ type: GETTING_STYLISTS_CHECK_COMPLETE, payload: res.data });
     })
     .catch(err =>

@@ -1,9 +1,10 @@
 import React from "react";
 import ProfileCardList from "./ProfileCardList";
-const Dashboard = props => {
+const Dashboard = ({ stylists }) => {
+  // const { stylists } = props;
   return (
     <div className="container">
-      <ProfileCardList />
+      <ProfileCardList stylists={stylists} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import Home from "./components/Home";
 import SignUpForm from "./components/Forms/SignUpForm";
 import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
-
+import MyDashboard from "./components/Dashboard/MyDashboard";
 // Action creators
 import { getStylists } from "./store/actions/index.js";
 
@@ -36,10 +36,10 @@ class App extends Component {
       <StyledApp>
         <Header />
         <NavBar />
-        <Route exact path="/" render={() => <Home />} />
-        <Route path="/logIn" render={() => <LogInForm />} />
-        <Route path="/:userType/dashboard" render={() => <Dashboard />} />
-        <Route path="/signUp" render={() => <SignUpForm />} />
+        <Route exact path="/" render={() => <LogInForm />} />
+        <Route path="/home" render={() => <Home />} />
+        <Route path="/mydashboard" render={() => <MyDashboard />} />
+        <Route path="/signup" render={() => <SignUpForm />} />
       </StyledApp>
     );
   }
