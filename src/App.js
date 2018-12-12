@@ -37,16 +37,12 @@ class App extends Component {
     this.props.getStylists();
   }
   render() {
-<<<<<<< HEAD
     const { stylists } = this.props; //deconstructing
 
-=======
->>>>>>> c30c21066a56409d1748c000c1cf4e824baa439c
     return (
       <StyledApp>
         <Header />
         <NavBar />
-<<<<<<< HEAD
         <Route exact path="/" component={LogInForm} />
         <Route
           path="/home"
@@ -61,15 +57,6 @@ class App extends Component {
           path="/stylists/:id"
           render={props => <StylistProfile {...props} stylists={stylists} />}
         />
-=======
-        <Route exact path="/home" render={props => <Home {...props} />} />
-        <Route path="/logIn" render={props => <LogInForm {...props} />} />
-        <Route
-          path="/:userType/dashboard"
-          render={props => <Dashboard {...props} />}
-        />
-        <Route path="/signUp" render={props => <SignUpForm {...props} />} />
->>>>>>> c30c21066a56409d1748c000c1cf4e824baa439c
       </StyledApp>
     );
   }
