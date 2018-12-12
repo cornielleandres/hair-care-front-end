@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileCardList from "./ProfileCardList";
+import ProfileCardList from "./Profiles/ProfileCardList";
 const Dashboard = props => {
   console.log("dash", props);
   return (

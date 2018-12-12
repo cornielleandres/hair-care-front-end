@@ -1,7 +1,7 @@
 import React from "react";
-import GeoMap from './GeoMap.js';
+import GeoMap from "../Projects/GeoMap.js";
 
-const StylistProfile = ({stylist}) => {
+const StylistProfile = ({ stylist }) => {
   return (
     <div className="box">
       <div>
@@ -13,7 +13,13 @@ const StylistProfile = ({stylist}) => {
         <h4>{stylist.rating}</h4>
         <h4>description</h4>
         <h4>{stylist.social_network_link}</h4>
-        <GeoMap address = {stylist.address} city = {stylist.city} state = {stylist.state} zip = {stylist.zip} id = {stylist.id} />
+        <GeoMap
+          address={stylist.address}
+          city={stylist.city}
+          state={stylist.state}
+          zip={stylist.zip}
+          id={stylist.id}
+        />
       </div>
     </div>
   );

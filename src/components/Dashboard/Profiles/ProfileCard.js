@@ -1,5 +1,4 @@
 import React from "react";
-
 const ProfileCard = props => {
   const { stylist } = props;
   return (

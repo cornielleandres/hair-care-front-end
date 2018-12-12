@@ -5,14 +5,14 @@ import { Route } from "react-router-dom";
 
 // Components
 import { Header } from "./components/index.js";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
 import SignUpForm from "./components/Forms/SignUpForm";
 import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import MyDashboard from "./components/Dashboard/MyDashboard";
-import ProfileCard from "./components/Dashboard/ProfileCard";
-import StylistProfile from "./components/Dashboard/StylistProfile";
+import ProfileCard from "./components/Dashboard/Profiles/ProfileCard";
+import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
 // Action creators
 import { getStylists } from "./store/actions/index.js";
 
@@ -29,7 +29,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isStylist: false
+      isStylist: false,
+      loggedIn: true
     };
   }
   componentDidMount() {
@@ -54,7 +55,14 @@ class App extends Component {
         <Route path="/signup" component={SignUpForm} />
         <Route
           path="/stylists/:id"
-          render={props => <StylistProfile {...props} stylist={stylists.find(stylist => '' + stylist.id === props.match.params.id)} />}
+          render={props => (
+            <StylistProfile
+              {...props}
+              stylist={stylists.find(
+                stylist => "" + stylist.id === props.match.params.id
+              )}
+            />
+          )}
         />
       </StyledApp>
     );
