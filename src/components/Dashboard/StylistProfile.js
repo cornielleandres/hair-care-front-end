@@ -1,10 +1,7 @@
 import React from "react";
+import GeoMap from './GeoMap.js';
 
-const StylistProfile = props => {
-  const id = props.match.params.id;
-
-  const stylist = props.stylists.find(stylist => `${stylist.id}` === id);
-  console.log("each", stylist);
+const StylistProfile = ({stylist}) => {
   return (
     <div className="box">
       <div>
@@ -16,6 +13,7 @@ const StylistProfile = props => {
         <h4>{stylist.rating}</h4>
         <h4>description</h4>
         <h4>{stylist.social_network_link}</h4>
+        <GeoMap address = {stylist.address} city = {stylist.city} state = {stylist.state} zip = {stylist.zip} id = {stylist.id} />
       </div>
     </div>
   );

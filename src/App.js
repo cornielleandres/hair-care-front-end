@@ -38,7 +38,6 @@ class App extends Component {
   }
   render() {
     const { stylists } = this.props; //deconstructing
-
     return (
       <StyledApp>
         <Header />
@@ -55,7 +54,7 @@ class App extends Component {
         <Route path="/signup" component={SignUpForm} />
         <Route
           path="/stylists/:id"
-          render={props => <StylistProfile {...props} stylists={stylists} />}
+          render={props => <StylistProfile {...props} stylist={stylists.find(stylist => '' + stylist.id === props.match.params.id)} />}
         />
       </StyledApp>
     );
