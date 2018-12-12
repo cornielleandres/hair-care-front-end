@@ -10,17 +10,22 @@ const Auth = App => LogInForm =>
       };
     }
     handleLogIn = () => {
-      this.setState({ loggedIn: true });
+      this.setState({ loggedIn: true }, () => {
+        this.props.history.push("/home");
+      });
     };
     handleLogOut = () => {
-      this.setState({ loggedIn: false });
+      localStorage.removeItem("userToken");
+      this.setState({ loggedIn: false }, () => {
+        this.props.history.push("/");
+      });
     };
     logUserIn = credentials => {
       axios
-        .post(`http://localhost:5000/api/stylists`, credentials)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/api/stylists`, credentials)
         .then(res => {
           const token = res.data.token;
-          localStorage.setItem("AuthToken", token);
+          localStorage.setItem("userToken", token);
           this.handleLogIn();
         })
         .catch(err =>
@@ -28,16 +33,18 @@ const Auth = App => LogInForm =>
         );
     };
     componentDidMount() {
-      if (localStorage.getItem("AuthToken")) {
+      if (localStorage.getItem("userToken")) {
         this.handleLogIn();
       }
     }
     render() {
-      const { loggedIn } = this.state.loggedIn;
+      const { loggedIn } = this.state;
       return loggedIn ? (
         <App handleLogOut={this.handleLogOut} />
       ) : (
-        <LogInForm />
+        <LogInForm handleLogIn={this.handleLogIn} />
       );
     }
   };
+
+export default Auth;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Comments from "./Comments";
-const Project = ({ project }) => {
+const Project = props => {
   return (
     <div className="box">
       <img src="" alt="project picture" />

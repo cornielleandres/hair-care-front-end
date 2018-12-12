@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import Axios from "axios";
 class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
+      username: "",
       password: "",
       name: "",
       storeName: "",
@@ -25,7 +26,15 @@ class SignUpForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    const { username, password, isStylist } = this.state;
     console.log(this.state);
+    Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
+      username,
+      password,
+      isStylist
+    })
+      .then(res => console.log("signup", res))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -34,11 +43,12 @@ class SignUpForm extends Component {
       <div className="box">
         <form onSubmit={this.handleSubmit}>
           <input
-            type="email"
+            type="text"
             placeholder="Email"
-            name="email"
+            name="username"
             value={this.state.email}
             onChange={this.handleInputChange}
+            required
           />
           <input
             name="password"
@@ -46,6 +56,7 @@ class SignUpForm extends Component {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handleInputChange}
+            required
           />
           <input
             type="text"
@@ -53,6 +64,7 @@ class SignUpForm extends Component {
             placeholder="Name"
             value={this.state.name}
             onChange={this.handleInputChange}
+            required
           />
           <input
             type="text"
@@ -80,6 +92,7 @@ class SignUpForm extends Component {
             name="isStylist"
             value="true"
             onChange={this.handleRadio}
+            required
           />
           <h4>I'm a stylist</h4>
           <input
@@ -87,6 +100,7 @@ class SignUpForm extends Component {
             name="isStylist"
             value="false"
             onChange={this.handleRaiod}
+            required
           />
           <h4>I'm not a stylist</h4>
           <button type="submit">Sign Up</button>

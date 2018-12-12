@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Project from "./Project";
-const ProjectList = ({ projects }) => {
+const ProjectList = props => {
+  console.log("*******", props);
   return (
     <div className="container">
-      <Project />
+      <Project stylist={props.stylist} />
+      {/* {props.stylist.specialty.map(stylist => (
+        <Project key={stylist.id} project={stylist} />
+      ))} */}
     </div>
   );
 };

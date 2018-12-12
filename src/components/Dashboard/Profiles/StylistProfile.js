@@ -1,4 +1,7 @@
 import React from "react";
+import { Route, Link } from "react-router-dom";
+import ProjectList from "../Projects/ProjectList";
+
 import GeoMap from "../Projects/GeoMap.js";
 
 const StylistProfile = ({ stylist }) => {
@@ -21,6 +24,11 @@ const StylistProfile = ({ stylist }) => {
           id={stylist.id}
         />
       </div>
+      <Link to={`/stylists/${stylist.id}/projects`}>View Projects</Link>
+      <Route
+        path="/stylists/:id/projects"
+        render={props => <ProjectList {...props} stylist={stylist} />}
+      />
     </div>
   );
 };
