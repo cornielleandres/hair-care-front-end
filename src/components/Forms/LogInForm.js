@@ -5,8 +5,8 @@ class LogInForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: null,
-      password: null
+      email: "",
+      password: ""
     };
   }
   handleInputChange = e => {

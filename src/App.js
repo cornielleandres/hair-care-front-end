@@ -29,8 +29,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isStylist: false,
-      loggedIn: true
+      isStylist: false
     };
   }
   componentDidMount() {
