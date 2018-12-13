@@ -159,7 +159,7 @@ class LogInForm extends Component {
     console.log("login");
     return (
       <StyledLoginComp>
-        <h1>Stylogue</h1>
+        <h1>Log In</h1>
         <form onSubmit={this.handleSumbmit}>
           <div className="input-div">
             <FontAwesomeIcon icon="envelope" />
@@ -194,7 +194,7 @@ class LogInForm extends Component {
           <h4 className="log-in-fail">Log in failed, please try again</h4>
         ) : null}
         <Link className="sign-up-btn" to="/signup">
-          Click Here To Sign Up
+          Click here to sign up
         </Link>
       </StyledLoginComp>
     );
