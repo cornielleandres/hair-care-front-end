@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
+import loginhero from "./assets/loginhero.jpg";
 // Components
 import { Header } from "./components/index.js";
 import NavBar from "./components/Layout/NavBar";

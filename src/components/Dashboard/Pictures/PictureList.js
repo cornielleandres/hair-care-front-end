@@ -19,7 +19,6 @@ export default class PictureList extends Component {
     // });
   };
   addComments = e => {
-    console.log("hiiiiiiiiiii");
     e.preventDefault();
     // let theOne = this.state.pictures.filter(
     // picture => picture.picture_id === id
