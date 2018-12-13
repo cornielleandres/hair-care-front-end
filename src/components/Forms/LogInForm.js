@@ -15,12 +15,18 @@ const StyledLoginComp = styled.div`
   padding: 50px;
   border: 5px solid #1d0b32;
   border-radius: 15px;
-  width: 40%;
+  width: 50%;
   margin: 75px auto;
 
+  @media (max-width: 800px) {
+    padding: 35px;
+  }
+
+
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 40px;
+    font-family: 'Fredoka One';
   }
 
   form {
@@ -30,17 +36,39 @@ const StyledLoginComp = styled.div`
     align-items: center;
     width: 100%;
 
+    .input-div {
+      width: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 800px) {
+        width: 100%;
+      }
+    }
+
+    svg {
+      padding: 0 10px 0 0;
+      color: #4947e5;
+      font-size: 3rem;
+      margin-bottom: 25px;
+
+      @media (max-width: 800px) {
+        font-size: 2.6rem;
+      }
+    }
+
     input {
-      // display: block;
       padding: 15px;
       border: 3px solid #f9899e;
       border-radius: 12px;
       margin-bottom: 25px;
-      width: 50%;
-      font-size: 1.1rem;
+      width: 90%;
+      font-size: 1.8rem;
+      font-family: 'Muli';
 
       @media (max-width: 800px) {
-        width: 60%;
+        width: 80%;
       }
 
       @media (max-width: 500px) {
@@ -49,34 +77,43 @@ const StyledLoginComp = styled.div`
 
       :focus {
         outline: none;
-        font-size: 1.1rem;
+        font-size: 1.8rem;
         color: #4947e5;
+        font-weight: 800;
       }
 
       ::placeholder {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
       }
     }
 
-    .login-btn-container {
-      display: flex;
-      justify-content: center;
+    .login-btn {
+      border: 2px solid #f9899e;
+      border-radius: 15px;
+      background: #1d0b32;
+      color: #f9899e;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
 
-      .login-btn {
-        border: 2px solid #f9899e;
-        border-radius: 15px;
-        background: #1d0b32;
-        color: #f9899e;
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        margin-top: 20px;
-        margin-bottom: 15px;
+      :hover {
+        transform: scale(1.1,1.1);
+        background-color: #4947e5;
       }
     }
   }
 
-  .sign-up {
+  .sign-up-btn {
     color: #f9899e;
+    font-family: 'Muli';
+    font-size: 1.4rem;
+
+    :hover {
+      color: #4947e5;
+    }
   }
 `;
 
@@ -122,9 +159,9 @@ class LogInForm extends Component {
     console.log("login");
     return (
       <StyledLoginComp>
-        <h1>Stylogue</h1>
+        <h1>Log In</h1>
         <form onSubmit={this.handleSumbmit}>
-          <div>
+          <div className="input-div">
             <FontAwesomeIcon icon="envelope" />
 
             <input
@@ -137,7 +174,7 @@ class LogInForm extends Component {
               autoFocus
             />
           </div>
-          <div>
+          <div className="input-div">
             <FontAwesomeIcon icon="key" />
             <input
               type="password"
@@ -157,7 +194,7 @@ class LogInForm extends Component {
           <h4 className="log-in-fail">Log in failed, please try again</h4>
         ) : null}
         <Link className="sign-up-btn" to="/signup">
-          Click Here To Sign Up
+          Click here to sign up
         </Link>
       </StyledLoginComp>
     );

@@ -5,63 +5,123 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledSignUpForm = styled.div`
-  font-family: sans-serif;
-  width: 280px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: black;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border: 5px solid #1d0b32;
+  border-radius: 15px;
+  width: 50%;
+  margin: 75px auto;
+
+  @media (max-width: 800px) {
+    padding: 35px;
+  }
 
   h1 {
-    font-size: 36px;
-    border-bottom: 2px solid black;
-    // border-radius: 3%;
-    margin-bottom: 30px;
-    padding: 12px 0;
+    font-size: 4rem;
+    margin-bottom: 40px;
+    font-family: 'Fredoka One';
   }
+
   form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
     div {
+      width: 85%;
       display: flex;
-      width: 100%;
-      font-size: 20px;
-      padding: 10px 0;
-      margin: 10px 0;
-      border-bottom: 2px solid black;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 800px) {
+        width: 100%;
+      }
     }
+
+    svg {
+      padding: 0 10px 0 0;
+      color: #4947e5;
+      font-size: 3rem;
+      margin-bottom: 25px;
+
+      @media (max-width: 800px) {
+        font-size: 2.6rem;
+      }
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 15px;
+      border: 3px solid #f9899e;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      width: 90%;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+
+      @media (max-width: 800px) {
+        width: 80%;
+      }
+
+      @media (max-width: 500px) {
+        width: 75%;
+      }
+    }
+
+    label {
+      font-family: 'Muli';
+      font-size: 1.4rem;
+    }
+
+
     .radio-container {
       justify-content: center;
-      vertical-align: middle;
-    }
-    input {
-      outline: none;
-      border: none;
-      color: black;
-      background: none;
-      font-size: 20px;
-      margin: 0 10px;
+      align-items: center;
+      padding: 10px 0;
+
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+
+      h4 {
+        font-family: 'Muli';
+        font-size: 1.4rem;
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
     }
 
     .signup-btn {
-      margin: 20px auto 30px auto;
-      border: 1px solid black;
-      background: none;
-      width: 50%;
-      transition: all 0.3s ease-in-out;
+      border: 2px solid #f9899e;
+      border-radius: 15px;
+      background: #1d0b32;
+      color: #f9899e;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+
       :hover {
-        transform: scale(1.1);
-        cursor: pointer;
+        transform: scale(1.1,1.1);
+        background-color: #4947e5;
       }
     }
   }
 
   .login-btn {
-    text-decoration: none;
-    border-bottom: 1px solid black;
-    color: black;
+    color: #f9899e;
+    font-family: 'Muli';
+    font-size: 1.4rem;
+
+    :hover {
+      color: #4947e5;
+    }
   }
 `;
 class SignUpForm extends Component {
@@ -135,7 +195,7 @@ class SignUpForm extends Component {
               required
             />
           </div>
-          <label htmlFor="isStylist">Are You a Stylist?</label>
+          <label htmlFor="isStylist">Are you a Stylist?</label>
           <div className="radio-container">
             <input
               type="radio"
@@ -159,7 +219,7 @@ class SignUpForm extends Component {
           </button>
         </form>
         <Link className="login-btn" to="/">
-          Click Here To Log In
+          Click here to log in
         </Link>
       </StyledSignUpForm>
     );

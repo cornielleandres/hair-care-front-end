@@ -3,16 +3,18 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
 	h1 {
-		font-size: 1.6rem;
+		font-size: 4rem;
 		text-align: center;
 		padding: 20px;
+		font-family: 'Fredoka One';
+		color: #1d0b32;
 	}
 `;
 
 const Header = () => {
 	return(
 		<StyledHeader>
-			<h1>HairCare</h1>
+			<h1>Stylogue</h1>
 		</StyledHeader>
 	);
 };
