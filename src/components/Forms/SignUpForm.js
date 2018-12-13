@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 class SignUpForm extends Component {
   constructor() {

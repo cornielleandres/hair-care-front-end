@@ -3,15 +3,11 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 // Components
-import Auth from "./components/Auth/Auth";
 import { Header } from "./components/index.js";
 import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
-import SignUpForm from "./components/Forms/SignUpForm";
-import LogInForm from "./components/Forms/LogInForm.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
-import ProjectList from "./components/Dashboard/Projects/ProjectList";
 // Action creators
 import { getStylists } from "./store/actions/index.js";
 

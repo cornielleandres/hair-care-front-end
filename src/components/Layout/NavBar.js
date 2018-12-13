@@ -5,6 +5,7 @@ const NavBar = props => {
   return (
     <nav className="container">
       <div className="box">
+        <NavLink to="/home">HOME</NavLink>
         <NavLink to="/dashboard">DASHBOARD</NavLink>
         <button onClick={props.handleLogOut}>Log Out</button>
       </div>

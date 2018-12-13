@@ -1,9 +1,9 @@
 import React from "react";
 import ProfileCardList from "./Profiles/ProfileCardList";
 const Dashboard = props => {
-  console.log("dash", props);
   return (
     <div className="container">
+      <h1>DashBoard</h1>
       <ProfileCardList {...props} />
     </div>
   );

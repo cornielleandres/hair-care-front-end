@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Route } from "react-router-dom";
+
 const Auth = App => LoginSignUp =>
   class extends Component {
     constructor() {
@@ -40,11 +42,16 @@ const Auth = App => LoginSignUp =>
     }
     render() {
       const { loggedIn, username } = this.state;
-      console.log('AUTH STTE', this.state)
       return loggedIn ? (
-        <App handleLogOut={this.handleLogOut} username = {username} />
+        <Route
+          path="/"
+          render={props => <App {...props} handleLogOut={this.handleLogOut} username = {username} />}
+        />
       ) : (
-        <LoginSignUp handleLogIn={this.handleLogIn} />
+        <Route
+          path="/"
+          render={props => <LoginSignUp {...props} handleLogIn={this.handleLogIn} />}
+        />
       );
     }
   };
