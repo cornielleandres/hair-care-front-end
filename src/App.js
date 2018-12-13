@@ -61,7 +61,7 @@ class App extends Component {
       <StyledApp>
         <Header />
         <NavBar handleLogOut={this.props.handleLogOut} />
-        <h1 class="welcome">Welcome, {this.state.username}!</h1>
+        <h1 className="welcome">Welcome, {this.state.username}!</h1>
         <Route
           path="/home"
           render={props => <Home {...props} stylists={stylists} />}
