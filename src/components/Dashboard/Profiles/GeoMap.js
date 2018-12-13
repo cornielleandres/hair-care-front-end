@@ -11,28 +11,47 @@ const StyledGeoMap = styled.div`
 `;
 
 class GeoMap extends Component {
+  state = {
+    address: '',
+    city: '',
+    state: '',
+    zip: 0,
+    id: 0,
+  };
 	componentDidMount() {
-    const mapBoxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-    const { address, city, state, zip, id } = this.props;
-    const geoAddress = `${address} ${city} ${state} ${zip}`
+    const token = localStorage.getItem("userToken");
+    const headers = { headers: { Authorization: `${token}` } };
     axios
-      .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${ geoAddress }.json?access_token=${mapBoxAccessToken}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${this.props.id}`, headers)
       .then(res => {
-        const center = res.data.features[0].center;
-        mapboxgl.accessToken = mapBoxAccessToken;
-        const map = new mapboxgl.Map({
-          container: `map${id}`,
-          center,
-          zoom: 13,
-          style: 'mapbox://styles/mapbox/streets-v10',
-          hash: true,
-          });
-        new mapboxgl.Marker()
-          .setLngLat(center)
-          .addTo(map);
+        const stylist = res.data[0];
+        const { address, city, state, zip, id } = stylist;
+        const mapBoxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+        this.setState({ address, city, state, zip, id }, () => {
+          const geoAddress = `${this.state.address} ${this.state.city} ${this.state.state} ${this.state.zip}`;
+          axios
+            .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${ geoAddress }.json?access_token=${mapBoxAccessToken}`)
+            .then(res => {
+              const center = res.data.features[0].center;
+              mapboxgl.accessToken = mapBoxAccessToken;
+              const map = new mapboxgl.Map({
+                container: `map${id}`,
+                center,
+                zoom: 13,
+                style: 'mapbox://styles/mapbox/streets-v10',
+                hash: true,
+                });
+              new mapboxgl.Marker()
+                .setLngLat(center)
+                .addTo(map);
+            })
+            .catch(err => console.log(err.response));
+        });
+
       })
-      .catch(err => console.log(err.response));
-  }
+      .catch(err => console.log(err.response))
+  };
+
   render() {
     const { id } = this.props;
     return(

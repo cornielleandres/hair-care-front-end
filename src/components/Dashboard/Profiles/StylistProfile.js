@@ -31,11 +31,7 @@ export default class StylistProfile extends Component {
           <h4>description</h4>
           <h4>{stylist.social_network_link}</h4>
           <GeoMap
-            address={stylist.address}
-            city={stylist.city}
-            state={stylist.state}
-            zip={stylist.zip}
-            id={stylist.id}
+            id = {this.props.match.params.id}
           />
         </div>
         <Link to={`/stylists/${stylist.id}/pictures`}>View pictures</Link>
