@@ -136,7 +136,7 @@ class LogInForm extends Component {
           </button>
         </form>
         {this.state.wrongCredentials ? (
-          <h4 className="wrong-info">Wrong information, please try again</h4>
+          <h4 className="log-in-fail">Log in failed, please try again</h4>
         ) : null}
         <Link className="sign-up-btn" to="/signup">
           Click Here To Sign Up
