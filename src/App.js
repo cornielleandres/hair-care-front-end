@@ -32,7 +32,7 @@ const StyledApp = styled.div`
 
   h1 {
     text-align: center;
-    font-size: 1.2rem;
+  
   }
 
   .message {

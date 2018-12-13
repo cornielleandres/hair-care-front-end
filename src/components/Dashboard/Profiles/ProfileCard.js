@@ -2,25 +2,25 @@ import React from "react";
 import styled from 'styled-components';
 
 const StyledProfileCard = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  border: 5px solid #1d0b32;
-  border-radius: 15px;
-  margin: 10px 0;
-  padding: 10px 0;
-  width: 100%;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+flex-wrap: wrap;
+flex-direction: column;
+border: 5px solid #1d0b32;
+border-radius: 15px;
+margin: 10px 5px;
+padding: 10px 0;
+width: 300px;
 
-  h4 {
-  font-size: 1.4rem;
-    color: #1D0B32;
-    text-decoration: none;
-    font-family: 'Muli';
-    margin-bottom: 10px;
-    
-  }
+h4 {
+font-size: 1.4rem;
+  color: #1D0B32;
+  text-decoration: none;
+  font-family: 'Muli';
+  margin-bottom: 10px;
+  
+}
 `;
 
 const ProfileCard = props => {
