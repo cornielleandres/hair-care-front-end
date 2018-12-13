@@ -21,6 +21,7 @@ const StyledLoginComp = styled.div`
   h1 {
     font-size: 3rem;
     margin-bottom: 40px;
+    font-family: 'Fredoka One';
   }
 
   form {
@@ -36,7 +37,7 @@ const StyledLoginComp = styled.div`
       border: 3px solid #f9899e;
       border-radius: 12px;
       margin-bottom: 25px;
-      width: 50%;
+      width: 100%;
       font-size: 1.1rem;
 
       @media (max-width: 800px) {
