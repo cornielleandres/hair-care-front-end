@@ -2,6 +2,21 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
 import Axios from "axios";
+import styled from 'styled-components';
+
+const StyledLoginComp = styled.div`
+  form {
+    input {}
+
+    .login-btn {
+
+    }
+  }
+
+  .sign-up-btn {
+    
+  }
+`;
 
 class LogInForm extends Component {
   constructor() {
@@ -39,7 +54,7 @@ class LogInForm extends Component {
   };
   render() {
     return (
-      <div className="box">
+      <StyledLoginComp>
         <form onSubmit={this.handleSumbmit}>
           <input
             type="text"
@@ -55,11 +70,11 @@ class LogInForm extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
-          <button type="submit">Log In</button>
+          <button className = 'login-btn' type="submit">Log In</button>
         </form>
-        <Link to="/signup">Click Here To Sign Up</Link>
+        <Link className = 'sign-up-btn' to="/signup">Click Here To Sign Up</Link>
         <Route path="/signup" component={SignUpForm} />
-      </div>
+      </StyledLoginComp>
     );
   }
 }
