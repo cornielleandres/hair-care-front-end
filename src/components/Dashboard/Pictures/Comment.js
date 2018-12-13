@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Comment = props => {
-  console.log("comments", props);
+  console.log("comments", props.comment.id);
   return (
     <div>
       <p>{props.comment.comment}</p>

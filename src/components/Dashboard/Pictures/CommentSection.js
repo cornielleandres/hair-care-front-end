@@ -63,6 +63,7 @@ class CommentSection extends Component {
   }
   render() {
     const { comments } = this.state;
+    console.log("COMENSECTION COMMENTS", comments);
     return (
       <div className="container">
         {comments.map((comment, i) => (
