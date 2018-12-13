@@ -9,14 +9,6 @@ class Picture extends Component {
     comments: []
   };
 
-  handleLikes = id => {
-    // let likes = this.props.pictures.filter(picture => picture.id === id);
-    // console.log(likes);
-    // TODO  ADD LIKES ONCE BACKEND HAS THE INFO
-    // this.setState({
-    //   ...this.state
-    // });
-  };
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -37,6 +29,17 @@ class Picture extends Component {
       })
       .catch();
   };
+  getPictureLikes = () => {
+    const token = localStorage.getItem("userToken");
+    const headers = { headers: { Authorization: `${token}` } };
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/likes/picture/${
+          this.props.picture.id
+        }`
+      )
+      .then();
+  };
   addComments = e => {
     e.preventDefault();
     console.log(this.state);
@@ -53,12 +56,14 @@ class Picture extends Component {
       .then(res => {
         this.getAllPictureComments();
         this.setState({ ...this.state, comment: "" });
-      });
+      })
+      .catch(err => ({ err }));
   };
   componentDidMount() {
     this.getAllPictureComments();
   }
   render() {
+    console.log("likes", this.props);
     return (
       <div className="box">
         <img
@@ -69,7 +74,7 @@ class Picture extends Component {
           alt="alt"
         />
         <FontAwesomeIcon icon="heart" />
-        <p onClick={() => this.handleLikes(this.props.picture.id)}>
+        <p onClick={() => this.getPictureLikes(this.props.picture.id)}>
           Likes: {this.props.picture.likes || 0}
         </p>
         <CommentSection

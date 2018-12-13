@@ -25,17 +25,42 @@ export default class StylistProfile extends Component {
   }
   render() {
     const { stylist } = this.state;
+    console.log("picture", stylist.profile_photo);
     return (
       <div className="box">
         <div>
-          <h4>picture</h4>
-          <h4>{stylist.first_name}</h4>
-          <h4>{stylist.address}</h4>
-          <h4>{stylist.phone_number}</h4>
-          <h4>{stylist.average_cost}</h4>
-          <h4>{stylist.rating}</h4>
-          <h4>description</h4>
-          <h4>{stylist.social_network_link}</h4>
+          {" "}
+          <div className="stylist-card-img">
+            <img src={stylist.profile_photo} alt="picture" />
+          </div>
+          <div className="stylist-info">
+            <span>Name:&nbsp;</span>
+            <h4>{stylist.first_name}</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Address:&nbsp;</span>
+            <h4>{stylist.address}</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Phone:&nbsp;</span>
+            <h4>{stylist.phone_number}</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Average Cost:&nbsp;</span>
+            <h4>{stylist.average_cost}</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Average Rating:&nbsp;</span>
+            <h4>{stylist.rating}</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Bio:&nbsp;</span>
+            <h4>description</h4>
+          </div>
+          <div className="stylist-info">
+            <span>Social:&nbsp;</span>
+            <h4>{stylist.social_network_link}</h4>
+          </div>
           <GeoMap id={this.props.match.params.id} />
         </div>
         <Link to={`/stylists/${stylist.id}/pictures`}>View pictures</Link>

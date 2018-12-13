@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledProfileCard = styled.div`
 display: flex;
@@ -38,7 +38,7 @@ const ProfileCard = props => {
   return (
     <StyledProfileCard>
       <div className="stylist-card-img">
-        <h4>picture</h4>
+        <img src={stylist.profile_photo} alt="picture" />
       </div>
 
       <div className="stylist-info">
