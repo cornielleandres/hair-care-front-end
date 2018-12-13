@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //styles
-
 const StyledLoginComp = styled.div`
   font-family: sans-serif;
   width: 280px;
