@@ -161,3 +161,7 @@ p {
   padding-bottom: 18px;
   line-height: 2.2rem;
 }
+
+a {
+  text-decoration: none;
+}
