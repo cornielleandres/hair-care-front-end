@@ -4,18 +4,77 @@ import Axios from "axios";
 import styled from 'styled-components';
 
 const StyledLoginComp = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 50px;
+border: 5px solid #1D0B32;
+border-radius: 15px;
+width: 40%;
+margin: 75px auto;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
   form {
-    input {}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-    .login-btn {
+      input {
+        // display: block;
+        padding: 15px;
+        border: 3px solid #F9899E;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        width: 50%;
+        font-size: 1.1rem;
 
+        @media (max-width: 800px) {
+          width: 60%;
+        }
+
+        @media (max-width: 500px) {
+          width: 75%;
+        }
+
+        :focus {
+          outline: none;
+          font-size: 1.1rem;
+          color: #4947E5;
+        }
+
+        ::placeholder {
+          font-size: 1.1rem;
+        }
+      }
+
+      .login-btn-container {
+        display: flex;
+        justify-content: center;
+
+        .login-btn {
+          border: 2px solid #F9899E;
+          border-radius: 15px;
+          background: #1D0B32;
+          color: #F9899E;
+          font-size: 1.1rem;
+          padding: 10px 20px;
+          margin-top: 20px;
+          margin-bottom: 15px;
+        }
+      }
     }
-  }
 
-  .sign-up-btn {
-
-  }
-`;
+    .sign-up {
+      color: #F9899E;
+    }
+  `;
 
 class LogInForm extends Component {
   constructor() {
@@ -48,7 +107,7 @@ class LogInForm extends Component {
   render() {
     return (
       <StyledLoginComp>
-        <h1>LOG IN</h1>
+        <h1>Log In</h1>
         <form onSubmit={this.handleSumbmit}>
           <input
             type="text"
@@ -64,9 +123,11 @@ class LogInForm extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
+          <div className = 'login-btn-container'>
           <button className = 'login-btn' type="submit">Log In</button>
+          </div>
         </form>
-        <Link className = 'sign-up-btn' to="/signup">Click Here To Sign Up</Link>
+        <Link className = 'sign-up' to="/signup">Click here to sign up</Link>
       </StyledLoginComp>
     );
   }
