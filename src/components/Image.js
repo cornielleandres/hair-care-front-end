@@ -1,7 +1,6 @@
 import React from "react";
 
 const Image = ({ picture }) => {
-  console.log("images", picture);
   return (
     <div>
       <img
