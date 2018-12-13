@@ -6,7 +6,7 @@ import { Route } from "react-router-dom";
 import { Header } from "./components/index.js";
 import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
-import Dashboard from "./components/Dashboard/Dashboard.js";
+import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
 // Action creators
 import { getStylists } from "./store/actions/index.js";
@@ -45,8 +45,8 @@ class App extends Component {
           render={props => <Home {...props} stylists={stylists} />}
         />
         <Route
-          path="/dashboard"
-          render={props => <Dashboard {...props} stylists={stylists} />}
+          path="/stylists"
+          render={props => <Stylists {...props} stylists={stylists} />}
         />
 
         <Route
@@ -54,9 +54,6 @@ class App extends Component {
           render={props => (
             <StylistProfile
               {...props}
-              stylist={stylists.find(
-                stylist => `${stylist.id}` === props.match.params.id
-              )}
             />
           )}
         />

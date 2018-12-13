@@ -3,7 +3,7 @@ import ProfileCardList from "./Profiles/ProfileCardList";
 const Dashboard = props => {
   return (
     <div className="container">
-      <h1>DashBoard</h1>
+      <h1>Stylists</h1>
       <ProfileCardList {...props} />
     </div>
   );

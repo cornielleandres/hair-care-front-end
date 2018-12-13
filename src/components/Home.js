@@ -8,7 +8,7 @@ export default class Home extends Component {
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/api/pictures`, headers)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/pictures/`, headers)
       .then(res => {
         this.setState({ pictures: res.data });
       })
