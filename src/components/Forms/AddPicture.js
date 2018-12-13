@@ -69,8 +69,8 @@ class AddPicture extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: ""
+      pictures: [],
+      comments: []
     };
   }
   handleInputChange = e => {
