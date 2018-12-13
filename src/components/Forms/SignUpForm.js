@@ -53,6 +53,7 @@ const StyledSignUpForm = styled.div`
       transition: all 0.3s ease-in-out;
       :hover {
         transform: scale(1.1);
+        cursor: pointer;
       }
     }
   }
@@ -110,7 +111,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <StyledSignUpForm>
-        <h1>SIGN UP</h1>
+        <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <FontAwesomeIcon icon="envelope" />

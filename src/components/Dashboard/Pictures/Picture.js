@@ -1,5 +1,7 @@
 import React from "react";
-import Comments from "./Comments";
+import Comments from "./CommentSection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CommentSection from "./CommentSection";
 const Picture = props => {
   return (
     <div className="box">
@@ -10,10 +12,23 @@ const Picture = props => {
         }
         alt="alt"
       />
+      <FontAwesomeIcon icon="heart" />
       <p onClick={() => props.handleLikes(props.picture.id)}>
         Likes: {props.picture.likes || 0}
       </p>
-      <Comments comment={props.picture.comment} />
+      <CommentSection
+        comment={props.picture.comment}
+        deleteComments={props.deleteComments}
+      />
+      <form onSubmit={props.addComments}>
+        <input
+          name="comment"
+          type="text"
+          placeholder="Add a comment"
+          onChange={props.handleChange}
+          value={props.input}
+        />
+      </form>
     </div>
   );
 };

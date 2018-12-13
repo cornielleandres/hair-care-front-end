@@ -10,11 +10,16 @@ import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
 // font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faKey,
+  faTimes,
+  faHeart
+} from "@fortawesome/free-solid-svg-icons";
 
 // Action creators
 import { getStylists } from "./store/actions/index.js";
-library.add(faEnvelope, faKey);
+library.add(faEnvelope, faKey, faTimes, faHeart);
 
 const StyledApp = styled.div`
   background-color: #c7dbf4;
