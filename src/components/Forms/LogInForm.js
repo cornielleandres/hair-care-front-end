@@ -1,19 +1,43 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import styled from 'styled-components';
+import styled from "styled-components";
+
+//font awesome
 
 const StyledLoginComp = styled.div`
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    border-bottom: 3px solid black;
+    margin-bottom: 50px;
+    padding: 13px 0;
+  }
   form {
-    input {}
+    input {
+      overflow: hidden;
+      width: 100%;
+      font-size: 20px;
+      padding: 8px 0;
+      margin: 8px 0;
+      border-bottom: 3px solid black;
+    }
 
     .login-btn {
-
     }
   }
 
   .sign-up-btn {
-
   }
 `;
 
@@ -64,9 +88,13 @@ class LogInForm extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
-          <button className = 'login-btn' type="submit">Log In</button>
+          <button className="login-btn" type="submit">
+            Log In
+          </button>
         </form>
-        <Link className = 'sign-up-btn' to="/signup">Click Here To Sign Up</Link>
+        <Link className="sign-up-btn" to="/signup">
+          Click Here To Sign Up
+        </Link>
       </StyledLoginComp>
     );
   }
