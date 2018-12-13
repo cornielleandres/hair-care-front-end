@@ -8,8 +8,13 @@ import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
 import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
+// font-awesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+
 // Action creators
 import { getStylists } from "./store/actions/index.js";
+library.add(faEnvelope, faKey);
 
 const StyledApp = styled.div`
   background-color: #c7dbf4;
@@ -34,13 +39,13 @@ class App extends Component {
     super();
     this.state = {
       isStylist: false,
-      username: "",
+      username: ""
     };
   }
 
   componentDidMount() {
     this.props.getStylists(localStorage.getItem("userToken"));
-    this.setState({username: localStorage.getItem("hairCareUsername")});
+    this.setState({ username: localStorage.getItem("hairCareUsername") });
   }
   render() {
     const { stylists } = this.props; //deconstructing
@@ -54,17 +59,14 @@ class App extends Component {
           render={props => <Home {...props} stylists={stylists} />}
         />
         <Route
-          exact path="/stylists"
+          exact
+          path="/stylists"
           render={props => <Stylists {...props} stylists={stylists} />}
         />
 
         <Route
           path="/stylists/:id"
-          render={props => (
-            <StylistProfile
-              {...props}
-            />
-          )}
+          render={props => <StylistProfile {...props} />}
         />
       </StyledApp>
     );
