@@ -43,11 +43,4 @@ class GeoMap extends Component {
   }
 }
 
-
-
-
-
-
-
-
 export default GeoMap;

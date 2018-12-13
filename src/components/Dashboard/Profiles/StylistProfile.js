@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import ProjectList from "../Projects/ProjectList";
+import PictureList from "../Pictures/PictureList";
 
-import GeoMap from "../Projects/GeoMap.js";
+import GeoMap from "./GeoMap.js";
 
 const StylistProfile = ({ stylist }) => {
   return (
@@ -24,10 +24,10 @@ const StylistProfile = ({ stylist }) => {
           id={stylist.id}
         />
       </div>
-      <Link to={`/stylists/${stylist.id}/projects`}>View Projects</Link>
+      <Link to={`/stylists/${stylist.id}/pictures`}>View pictures</Link>
       <Route
-        path="/stylists/:id/projects"
-        render={props => <ProjectList {...props} stylist={stylist} />}
+        path="/stylists/:id/pictures"
+        render={props => <PictureList {...props} stylist={stylist} />}
       />
     </div>
   );

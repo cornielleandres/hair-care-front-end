@@ -1,12 +1,12 @@
 import React from "react";
 import Comments from "./Comments";
-const Project = props => {
+const Picture = props => {
   return (
     <div className="box">
-      <img src="" alt="project" />
+      <img src="" alt="alt" />
       <p>likes</p>
       <Comments />
     </div>
   );
 };
-export default Project;
+export default Picture;
