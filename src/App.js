@@ -14,6 +14,15 @@ import { getStylists } from "./store/actions/index.js";
 const StyledApp = styled.div`
   background-color: #c7dbf4;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    font-size: 1.2rem;
+  }
 
   .message {
     text-align: center;
@@ -38,8 +47,8 @@ class App extends Component {
     return (
       <StyledApp>
         <Header />
-        <h1>Hello, {this.state.username}</h1>
         <NavBar handleLogOut={this.props.handleLogOut} />
+        <h1>Welcome, {this.state.username}!</h1>
         <Route
           path="/home"
           render={props => <Home {...props} stylists={stylists} />}

@@ -1,7 +1,6 @@
 import React from "react";
 import Comments from "./Comments";
 const Picture = props => {
-  console.log('PICTURE PRIPS', props)
   return (
     <div className="box">
       <img src={props.picture.portfolio_picture || 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'} alt="alt" />
