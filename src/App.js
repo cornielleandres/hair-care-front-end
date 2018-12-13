@@ -23,15 +23,17 @@ import { getStylists } from "./store/actions/index.js";
 library.add(faEnvelope, faKey, faTimes, faHeart);
 
 const StyledApp = styled.div`
-  background-color: #c7dbf4;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
 
-  h1 {
+  .welcome {
     text-align: center;
+    font-size: 2.8rem;
+    margin: 20px 0 50px;
   
   }
 
@@ -59,7 +61,7 @@ class App extends Component {
       <StyledApp>
         <Header />
         <NavBar handleLogOut={this.props.handleLogOut} />
-        <h1>Welcome, {this.state.username}!</h1>
+        <h1 class="welcome">Welcome, {this.state.username}!</h1>
         <Route
           path="/home"
           render={props => <Home {...props} stylists={stylists} />}
