@@ -4,7 +4,7 @@ import Axios from "axios";
 import styled from "styled-components";
 
 //font awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fontawesome/react-fontawesome";
 
 //styles
 
