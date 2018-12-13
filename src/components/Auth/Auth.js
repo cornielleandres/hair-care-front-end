@@ -11,7 +11,7 @@ const Auth = App => LoginSignUp =>
         err: ""
       };
     }
-    handleLogIn = (username) => {
+    handleLogIn = username => {
       this.setState({ loggedIn: true }, () => {
         this.props.history.push("/home");
       });
@@ -36,21 +36,31 @@ const Auth = App => LoginSignUp =>
         );
     };
     componentDidMount() {
+      console.log("auth");
       if (localStorage.getItem("userToken")) {
         this.handleLogIn();
       }
     }
     render() {
+      console.log("render auth");
       const { loggedIn, username } = this.state;
       return loggedIn ? (
         <Route
           path="/"
-          render={props => <App {...props} handleLogOut={this.handleLogOut} username = {username} />}
+          render={props => (
+            <App
+              {...props}
+              handleLogOut={this.handleLogOut}
+              username={username}
+            />
+          )}
         />
       ) : (
         <Route
           path="/"
-          render={props => <LoginSignUp {...props} handleLogIn={this.handleLogIn} />}
+          render={props => (
+            <LoginSignUp {...props} handleLogIn={this.handleLogIn} />
+          )}
         />
       );
     }

@@ -21,7 +21,6 @@ const StyledLoginComp = styled.div`
   h1 {
     font-size: 36px;
     border-bottom: 2px solid black;
-    // border-radius: 3%;
     margin-bottom: 30px;
     padding: 12px 0;
   }
@@ -36,15 +35,15 @@ const StyledLoginComp = styled.div`
       margin: 10px 0;
       border-bottom: 2px solid black;
     }
-    input {
-      outline: none;
-      border: none;
-      color: black;
-      background: none;
-      font-size: 20px;
-      margin: 0 10px;
-    }
-
+        input {
+          outline: none;
+          border: none;
+          color: black;
+          background: none;
+          font-size: 20px;
+          margin: 0 10px;
+        }
+    
     .login-btn {
       margin: 20px auto 30px auto;
       border: 1px solid black;
@@ -55,9 +54,7 @@ const StyledLoginComp = styled.div`
         transform: scale(1.1);
         cursor: pointer;
       }
-    }
   }
-
   .sign-up-btn {
     text-decoration: none;
     border-bottom: 1px solid black;
@@ -70,7 +67,9 @@ class LogInForm extends Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      isCheckingCredentials: false,
+      wrongCredentials: false
     };
   }
   handleInputChange = e => {
@@ -81,6 +80,9 @@ class LogInForm extends Component {
   };
   handleSumbmit = e => {
     e.preventDefault();
+    this.setState({
+      isCheckingCredentials: true
+    });
     const { username, password } = this.state;
     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
       username,
@@ -89,17 +91,24 @@ class LogInForm extends Component {
       .then(res => {
         localStorage.setItem("userToken", res.data.token);
         localStorage.setItem("hairCareUsername", username);
+        this.setState({
+          isCheckingCredentials: false
+        });
         this.props.handleLogIn();
       })
-      .catch(err => console.log("login POST ERR", err));
+      .catch(err =>
+        this.setState({ isCheckingCredentials: false, wrongCredentials: true })
+      );
   };
   render() {
+    console.log("login");
     return (
       <StyledLoginComp>
         <h1>Stylogue</h1>
         <form onSubmit={this.handleSumbmit}>
           <div>
             <FontAwesomeIcon icon="envelope" />
+
             <input
               type="text"
               placeholder="Enter Username"
@@ -121,10 +130,14 @@ class LogInForm extends Component {
               autoComplete="off"
             />
           </div>
+
           <button className="login-btn" type="submit">
-            Log In
+            {this.state.isCheckingCredentials ? "Loading" : "Log In"}
           </button>
         </form>
+        {this.state.wrongCredentials ? (
+          <h4 className="wrong-info">Wrong information, please try again</h4>
+        ) : null}
         <Link className="sign-up-btn" to="/signup">
           Click Here To Sign Up
         </Link>
