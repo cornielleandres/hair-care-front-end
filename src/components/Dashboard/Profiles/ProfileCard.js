@@ -18,14 +18,14 @@ width: 300px;
   align-items: baseline;
 
   span {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 900;
     color: black;
   }
 }
 
 h4 {
-font-size: 1.4rem;
+font-size: 1.8rem;
   color: #1D0B32;
   font-family: 'Muli';
   margin-bottom: 10px;
