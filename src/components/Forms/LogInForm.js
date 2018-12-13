@@ -15,11 +15,11 @@ const StyledLoginComp = styled.div`
   padding: 50px;
   border: 5px solid #1d0b32;
   border-radius: 15px;
-  width: 40%;
+  width: 50%;
   margin: 75px auto;
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 40px;
     font-family: 'Fredoka One';
   }
@@ -31,13 +31,16 @@ const StyledLoginComp = styled.div`
     align-items: center;
     width: 100%;
 
+    .input-div {
+      width: 75%;
+    }
+
     input {
-      // display: block;
       padding: 15px;
       border: 3px solid #f9899e;
       border-radius: 12px;
       margin-bottom: 25px;
-      width: 100%;
+      width: 90%;
       font-size: 1.1rem;
 
       @media (max-width: 800px) {
@@ -125,7 +128,7 @@ class LogInForm extends Component {
       <StyledLoginComp>
         <h1>Stylogue</h1>
         <form onSubmit={this.handleSumbmit}>
-          <div>
+          <div className="input-div">
             <FontAwesomeIcon icon="envelope" />
 
             <input
@@ -138,7 +141,7 @@ class LogInForm extends Component {
               autoFocus
             />
           </div>
-          <div>
+          <div className="input-div">
             <FontAwesomeIcon icon="key" />
             <input
               type="password"
