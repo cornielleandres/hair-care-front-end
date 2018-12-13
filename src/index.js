@@ -9,7 +9,7 @@ import "./index.css";
 
 // Component
 import App from "./App";
-import LogInForm from "./components/Forms/LogInForm";
+import LoginSignUp from "./components/Forms/LoginSignUp";
 import Auth from "./components/Auth/Auth";
 
 // MiddleWare
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "development") {
   store = createStore(UserReducer, applyMiddleware(thunk));
 }
 
-const AuthComponent = Auth(App)(LogInForm);
+const AuthComponent = Auth(App)(LoginSignUp);
 
 ReactDOM.render(
   <Provider store={store}>

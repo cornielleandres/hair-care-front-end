@@ -14,7 +14,7 @@ const StyledLoginComp = styled.div`
   }
 
   .sign-up-btn {
-    
+
   }
 `;
 
@@ -35,19 +35,12 @@ class LogInForm extends Component {
   handleSumbmit = e => {
     e.preventDefault();
     const { username, password } = this.state;
-    console.log("sent to backend");
-    this.setState({
-      username: "",
-      password: ""
-    });
     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
       username,
       password
     })
       .then(res => {
         localStorage.setItem("userToken", res.data.token);
-        console.log(localStorage.getItem("userToken"));
-        console.log("loginform", this.props);
         this.props.handleLogIn();
       })
       .catch(err => console.log("login POST ERR", err));
@@ -73,7 +66,6 @@ class LogInForm extends Component {
           <button className = 'login-btn' type="submit">Log In</button>
         </form>
         <Link className = 'sign-up-btn' to="/signup">Click Here To Sign Up</Link>
-        <Route path="/signup" component={SignUpForm} />
       </StyledLoginComp>
     );
   }
