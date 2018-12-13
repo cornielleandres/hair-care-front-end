@@ -18,6 +18,11 @@ const StyledLoginComp = styled.div`
   width: 50%;
   margin: 75px auto;
 
+  @media (max-width: 800px) {
+    padding: 35px;
+  }
+
+
   h1 {
     font-size: 4rem;
     margin-bottom: 40px;
@@ -32,7 +37,25 @@ const StyledLoginComp = styled.div`
     width: 100%;
 
     .input-div {
-      width: 75%;
+      width: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 800px) {
+        width: 100%;
+      }
+    }
+
+    svg {
+      padding: 0 10px 0 0;
+      color: #4947e5;
+      font-size: 3rem;
+      margin-bottom: 25px;
+
+      @media (max-width: 800px) {
+        font-size: 2.6rem;
+      }
     }
 
     input {
@@ -41,10 +64,11 @@ const StyledLoginComp = styled.div`
       border-radius: 12px;
       margin-bottom: 25px;
       width: 90%;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
+      font-family: 'Muli';
 
       @media (max-width: 800px) {
-        width: 60%;
+        width: 80%;
       }
 
       @media (max-width: 500px) {
@@ -53,34 +77,43 @@ const StyledLoginComp = styled.div`
 
       :focus {
         outline: none;
-        font-size: 1.1rem;
+        font-size: 1.8rem;
         color: #4947e5;
+        font-weight: 800;
       }
 
       ::placeholder {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
       }
     }
 
-    .login-btn-container {
-      display: flex;
-      justify-content: center;
+    .login-btn {
+      border: 2px solid #f9899e;
+      border-radius: 15px;
+      background: #1d0b32;
+      color: #f9899e;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
 
-      .login-btn {
-        border: 2px solid #f9899e;
-        border-radius: 15px;
-        background: #1d0b32;
-        color: #f9899e;
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        margin-top: 20px;
-        margin-bottom: 15px;
+      :hover {
+        transform: scale(1.1,1.1);
+        background-color: #4947e5;
       }
     }
   }
 
-  .sign-up {
+  .sign-up-btn {
     color: #f9899e;
+    font-family: 'Muli';
+    font-size: 1.4rem;
+
+    :hover {
+      color: #4947e5;
+    }
   }
 `;
 
