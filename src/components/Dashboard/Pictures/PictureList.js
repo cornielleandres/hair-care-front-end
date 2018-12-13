@@ -18,41 +18,26 @@ export default class PictureList extends Component {
     //   ...this.state
     // });
   };
-  addComments = e => {
-    e.preventDefault();
-    // let theOne = this.state.pictures.filter(
-    // picture => picture.picture_id === id
-    // );
-    // console.log(theOne);
-    this.setState({
-      pictures: [...this.state.pictures, { comment: this.state.input }],
-      input: ""
-    });
-  };
-  deleteComments = comment => {
-    const dcomment = this.state.pictures.filter(
-      picture => picture.comment !== comment
-    );
-    // TODO DELETE COMMENTS ONCE BACKEND HAS INFO
-    // this.setState({
-    //   ...this.state,
-    //   pictures: dcomment
-    // });
-  };
+
   componentDidMount() {
+    // console.log("CDM", this.props.match.params.id);
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${
+      this.props.match.params.id
+    }`;
+    // console.log("PICTURELIST URL", URL);
+    const token = localStorage.getItem("userToken");
+    const headers = { headers: { Authorization: `${token}` } };
     axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${
-          this.props.match.params.id
-        }`
-      )
+      .get(URL, headers)
       .then(res => {
+        console.log("cdm piclist", res);
         this.setState({ pictures: res.data });
       })
       .catch(err => console.log(err.response));
   }
   render() {
     const { pictures } = this.state;
+    // console.log("picturelist", pictures);
     return (
       <div className="container">
         {pictures.map((picture, i) => (
@@ -60,8 +45,6 @@ export default class PictureList extends Component {
             key={i}
             picture={picture}
             handleLikes={this.handleLikes}
-            deleteComments={this.deleteComments}
-            addComments={this.addComments}
             input={this.state.input}
             handleChange={this.handleChange}
           />

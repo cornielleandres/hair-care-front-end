@@ -1,24 +1,30 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import PictureList from "../Pictures/PictureList";
-import axios from 'axios';
+import axios from "axios";
 
 import GeoMap from "./GeoMap.js";
 
 export default class StylistProfile extends Component {
-  state = {stylist: {}};
+  state = { stylist: {} };
   componentDidMount() {
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${this.props.match.params.id}`, headers)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/stylists/${
+          this.props.match.params.id
+        }`,
+        headers
+      )
       .then(res => {
-        this.setState({stylist: res.data[0]})
+        console.log("Sprofile", res.data);
+        this.setState({ stylist: res.data[0] });
       })
-      .catch(err => console.log(err.response))
+      .catch(err => console.log(err.response));
   }
   render() {
-    const {stylist} = this.state;
+    const { stylist } = this.state;
     return (
       <div className="box">
         <div>
@@ -30,9 +36,7 @@ export default class StylistProfile extends Component {
           <h4>{stylist.rating}</h4>
           <h4>description</h4>
           <h4>{stylist.social_network_link}</h4>
-          <GeoMap
-            id = {this.props.match.params.id}
-          />
+          <GeoMap id={this.props.match.params.id} />
         </div>
         <Link to={`/stylists/${stylist.id}/pictures`}>View pictures</Link>
         <Route
@@ -42,4 +46,4 @@ export default class StylistProfile extends Component {
       </div>
     );
   }
-};
+}
