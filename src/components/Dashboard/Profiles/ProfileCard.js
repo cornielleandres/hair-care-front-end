@@ -7,10 +7,20 @@ const StyledProfileCard = styled.div`
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  border: 1px solid black;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 5px;
+  border: 5px solid #1d0b32;
+  border-radius: 15px;
+  margin: 10px 0;
+  padding: 10px 0;
+  width: 100%;
+
+  h4 {
+  font-size: 1.4rem;
+    color: #1D0B32;
+    text-decoration: none;
+    font-family: 'Muli';
+    margin-bottom: 10px;
+    
+  }
 `;
 
 const ProfileCard = props => {

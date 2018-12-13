@@ -80,6 +80,7 @@ const StyledSignUpForm = styled.div`
 
     .radio-container {
       justify-content: center;
+      align-items: center;
       padding: 10px 0;
 
       input[type="radio"] {
@@ -90,6 +91,7 @@ const StyledSignUpForm = styled.div`
         font-family: 'Muli';
         font-size: 1.4rem;
         margin-right: 20px;
+        margin-bottom: 0;
       }
     }
 

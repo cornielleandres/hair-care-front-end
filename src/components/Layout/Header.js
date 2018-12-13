@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
 		text-align: center;
 		padding: 20px;
 		font-family: 'Fredoka One';
-		color: #F9899E;
+		color: #1d0b32;
 	}
 `;
 
