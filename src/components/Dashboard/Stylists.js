@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileCardList from "./Profiles/ProfileCardList";
-const Dashboard = props => {
+const Stylists = props => {
   return (
     <div className="container">
       <h1>Stylists</h1>
@@ -9,4 +9,4 @@ const Dashboard = props => {
   );
 };
 
-export default Dashboard;
+export default Stylists;

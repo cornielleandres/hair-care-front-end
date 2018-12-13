@@ -45,7 +45,7 @@ class App extends Component {
           render={props => <Home {...props} stylists={stylists} />}
         />
         <Route
-          path="/stylists"
+          exact path="/stylists"
           render={props => <Stylists {...props} stylists={stylists} />}
         />
 
