@@ -9,26 +9,35 @@ const StyledNavBar = styled.nav`
   width: 100%;
 
   a, button {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px 5px;
-    background-color: white;
-    text-decoration: none;
+    border: 2px solid #f9899e;
+      border-radius: 15px;
+      background: #1d0b32;
+      color: #f9899e;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      text-decoration: none;
 
     &:hover {
-      background-color: #444;
-      color: white;
-      cursor: pointer;
+      transform: scale(1.1,1.1);
+      background-color: #4947e5;
     }
+  }
+
+  a {
+    padding: 12px 20px;
   }
 `;
 
 const NavBar = props => {
   return (
     <StyledNavBar>
-        <NavLink to="/home">HOME</NavLink>
-        <NavLink to="/stylists">STYLISTS</NavLink>
-        <button onClick={props.handleLogOut}>LOG OUT</button>
+        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/stylists">Stylists</NavLink>
+        <button onClick={props.handleLogOut}>Log Out</button>
     </StyledNavBar>
   );
 };
