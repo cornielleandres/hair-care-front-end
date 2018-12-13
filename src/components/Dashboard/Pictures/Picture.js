@@ -33,26 +33,26 @@ class Picture extends Component {
         headers
       )
       .then(res => {
-        this.setState({ comments: res.data }, () =>
-          console.log("PICTURE AFTER GET ALL", this.state)
-        );
+        this.setState({ comments: res.data });
       })
       .catch();
   };
   addComments = e => {
     e.preventDefault();
+    console.log(this.state);
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
-    // console.log("addcomments", this.props);
     axios
       .post(
         `${process.env.REACT_APP_BACKEND_URL}/api/comments/picture/${
           this.props.picture.id
         }`,
+        { comment: this.state.comment },
         headers
       )
       .then(res => {
         this.getAllPictureComments();
+        this.setState({ ...this.state, comment: "" });
       });
   };
   componentDidMount() {
