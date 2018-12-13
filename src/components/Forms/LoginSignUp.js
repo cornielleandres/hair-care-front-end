@@ -3,11 +3,11 @@ import { Route } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LogInForm";
 
-const LoginSignUp = () => {
+const LoginSignUp = ({handleLogIn}) => {
 	return(
 		<div>
-			<Route exact path="/" component={LoginForm} />
-			<Route path="/signup" component={SignUpForm} />
+			<Route exact path="/" render={props => <LoginForm {...props} handleLogIn={handleLogIn} />} />
+			<Route path="/signup" render={props => <SignUpForm {...props} handleLogIn={handleLogIn} />} />
 		</div>
 	);
 };

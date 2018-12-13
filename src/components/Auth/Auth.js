@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-const Auth = App => LogInForm =>
+const Auth = App => LoginSignUp =>
   class extends Component {
     constructor() {
       super();
@@ -9,13 +9,14 @@ const Auth = App => LogInForm =>
         err: ""
       };
     }
-    handleLogIn = () => {
+    handleLogIn = (username) => {
       this.setState({ loggedIn: true }, () => {
         this.props.history.push("/home");
       });
     };
     handleLogOut = () => {
       localStorage.removeItem("userToken");
+      localStorage.removeItem("hairCareUsername");
       this.setState({ loggedIn: false }, () => {
         this.props.history.push("/");
       });
@@ -38,11 +39,12 @@ const Auth = App => LogInForm =>
       }
     }
     render() {
-      const { loggedIn } = this.state;
+      const { loggedIn, username } = this.state;
+      console.log('AUTH STTE', this.state)
       return loggedIn ? (
-        <App handleLogOut={this.handleLogOut} />
+        <App handleLogOut={this.handleLogOut} username = {username} />
       ) : (
-        <LogInForm handleLogIn={this.handleLogIn} />
+        <LoginSignUp handleLogIn={this.handleLogIn} />
       );
     }
   };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Axios from "axios";
 class SignUpForm extends Component {
   constructor() {
@@ -33,18 +33,30 @@ class SignUpForm extends Component {
       password,
       isStylist
     })
-      .then(res => console.log("signup", res))
+      .then(res => {
+        const { username, password } = this.state;
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
+          username,
+          password
+        })
+          .then(res => {
+            localStorage.setItem("userToken", res.data.token);
+            localStorage.setItem("hairCareUsername", username);
+            this.props.handleLogIn();
+          })
+          .catch(err => console.log("login POST ERR", err));
+      })
       .catch(err => console.log(err));
   };
 
   render() {
-    // if (this.state.isStylist) {
     return (
       <div className="box">
+      <h1>SIGN UP</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            placeholder="Email"
+            placeholder="Username"
             name="username"
             value={this.state.email}
             onChange={this.handleInputChange}
@@ -57,35 +69,6 @@ class SignUpForm extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
             required
-          />
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={this.handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="storeName"
-            placeholder="Store name"
-            value={this.state.storeName}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="text"
-            name="contactNumber"
-            placeholder="Contact number"
-            value={this.state.contactNumber}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="text"
-            name="location"
-            placeholder="Store location"
-            value={this.state.location}
-            onChange={this.handleInputChange}
           />
           <input
             type="radio"
@@ -105,6 +88,7 @@ class SignUpForm extends Component {
           <h4>I'm not a stylist</h4>
           <button type="submit">Sign Up</button>
         </form>
+        <Link className = 'login-btn' to="/">Click Here To Log In</Link>
       </div>
     );
     // }

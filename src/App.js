@@ -28,20 +28,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isStylist: false
+      isStylist: false,
+      username: "",
     };
   }
 
   componentDidMount() {
-    console.log("cdm home", this.props);
     this.props.getStylists(localStorage.getItem("userToken"));
+    this.setState({username: localStorage.getItem("hairCareUsername")});
   }
   render() {
     const { stylists } = this.props; //deconstructing
-    console.log("APP stylists", stylists);
     return (
       <StyledApp>
         <Header />
+        <h1>Hello, {this.state.username}</h1>
         <NavBar handleLogOut={this.props.handleLogOut} />
         <Route
           path="/home"

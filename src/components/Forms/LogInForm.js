@@ -41,6 +41,7 @@ class LogInForm extends Component {
     })
       .then(res => {
         localStorage.setItem("userToken", res.data.token);
+        localStorage.setItem("hairCareUsername", username);
         this.props.handleLogIn();
       })
       .catch(err => console.log("login POST ERR", err));
@@ -48,6 +49,7 @@ class LogInForm extends Component {
   render() {
     return (
       <StyledLoginComp>
+        <h1>LOG IN</h1>
         <form onSubmit={this.handleSumbmit}>
           <input
             type="text"
