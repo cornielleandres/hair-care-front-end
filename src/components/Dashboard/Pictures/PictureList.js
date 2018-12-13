@@ -19,6 +19,7 @@ export default class PictureList extends Component {
       .catch(err => console.log(err.response));
   }
   render() {
+    console.log("PLIST", this.state);
     const { pictures } = this.state;
     return (
       <div className="container">
