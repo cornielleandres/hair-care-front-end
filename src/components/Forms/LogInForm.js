@@ -8,61 +8,77 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //styles
 const StyledLoginComp = styled.div`
-  font-family: sans-serif;
-  width: 280px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: black;
-  transform: translate(-50%, -50%);
-  text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 50px;
+border: 5px solid #1D0B32;
+border-radius: 15px;
+width: 40%;
+margin: 75px auto;
 
   h1 {
-    font-size: 36px;
-    border-bottom: 2px solid black;
-    // border-radius: 3%;
-    margin-bottom: 30px;
-    padding: 12px 0;
+    font-size: 3rem;
+    margin-bottom: 40px;
   }
+
   form {
     display: flex;
     flex-direction: column;
-    div {
-      display: flex;
-      width: 100%;
-      font-size: 20px;
-      padding: 10px 0;
-      margin: 10px 0;
-      border-bottom: 2px solid black;
-    }
-    input {
-      outline: none;
-      border: none;
-      color: black;
-      background: none;
-      font-size: 20px;
-      margin: 0 10px;
-    }
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-    .login-btn {
-      margin: 20px auto 30px auto;
-      border: 1px solid black;
-      background: none;
-      width: 50%;
-      transition: all 0.3s ease-in-out;
-      :hover {
-        transform: scale(1.1);
-        cursor: pointer;
+      input {
+        // display: block;
+        padding: 15px;
+        border: 3px solid #F9899E;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        width: 50%;
+        font-size: 1.1rem;
+
+        @media (max-width: 800px) {
+          width: 60%;
+        }
+
+        @media (max-width: 500px) {
+          width: 75%;
+        }
+
+        :focus {
+          outline: none;
+          font-size: 1.1rem;
+          color: #4947E5;
+        }
+
+        ::placeholder {
+          font-size: 1.1rem;
+        }
+      }
+
+      .login-btn-container {
+        display: flex;
+        justify-content: center;
+
+        .login-btn {
+          border: 2px solid #F9899E;
+          border-radius: 15px;
+          background: #1D0B32;
+          color: #F9899E;
+          font-size: 1.1rem;
+          padding: 10px 20px;
+          margin-top: 20px;
+          margin-bottom: 15px;
+        }
       }
     }
-  }
 
-  .sign-up-btn {
-    text-decoration: none;
-    border-bottom: 1px solid black;
-    color: black;
-  }
-`;
+    .sign-up {
+      color: #F9899E;
+    }
+  `;
 
 class LogInForm extends Component {
   constructor() {
