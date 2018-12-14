@@ -31,9 +31,12 @@ const StyledDiv = styled.div`
     color: #f9899e;
     margin: 0 auto;
     margin-bottom: 15px;
-
+    border: 3px solid #f9899e;
+    border-radius: 15px;
+    padding: 10px;
     :hover {
-      color: blue;
+      color: #1d0b32;
+      background: #f9899e;
     }
   }
 
