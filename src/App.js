@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import loginhero from "./assets/loginhero.jpg";
 // Components
 import Header from "./components/Layout/Header";
 import NavBar from "./components/Layout/NavBar";
