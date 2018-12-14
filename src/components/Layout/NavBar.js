@@ -8,7 +8,7 @@ const StyledNavBar = styled.nav`
   align-items: center;
   background: #1d0b32;
   width: 100%;
-  padding: 20px;
+  padding: 0 0 30px;
 
   a, button {
     border: 2px solid #f9899e;
