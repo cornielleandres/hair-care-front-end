@@ -5,13 +5,13 @@ class StylistSignUpForm extends Component {
   constructor() {
     super();
     this.state = {
+      profile_photo: "",
       first_name: "",
       last_name: "",
       address: "",
       city: "",
       state: "",
       zip: "",
-      contactNumber: "",
       isStylist: true
     };
   }
@@ -30,7 +30,13 @@ class StylistSignUpForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="profile_photo" />
+          <input
+            type="text"
+            name="profile_photo"
+            value={this.state.profile_photo}
+            placeholder="picture of yourself"
+            onChange={this.handleChange}
+          />
           <input
             name="first_name"
             value={this.state.username}
