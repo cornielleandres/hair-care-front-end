@@ -6,25 +6,25 @@ import GeoMap from "./GeoMap.js";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-display: flex;
-flex-wrap: wrap;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-border: 5px solid #f9899e;
-border-radius: 15px;
-margin: 10px 15px;
-padding: 20px;
-width: 325px;
-background: #1d0b32;
-
-img {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 5px solid #f9899e;
   border-radius: 15px;
-  max-width: 300px;
-  max-height: 300px;
-  margin: 0 auto;
-  margin-bottom: 15px;
-}
+  margin: 10px 15px;
+  padding: 20px;
+  width: 325px;
+  background: #1d0b32;
+
+  img {
+    border-radius: 15px;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
 
   .link {
     font-size: 1.8rem;
@@ -49,14 +49,13 @@ img {
       font-weight: 900;
       color: #f9899e;
     }
-  
+
     h4 {
       font-size: 1.8rem;
-        color: #f9899e;
-        font-family: 'Muli';
-        margin-bottom: 10px;
-        
-      }
+      color: #f9899e;
+      font-family: "Muli";
+      margin-bottom: 10px;
+    }
   }
 
   .stylist-map {
@@ -84,11 +83,11 @@ export default class StylistProfile extends Component {
   render() {
     const { stylist } = this.state;
     return (
-      <StyledDiv className="container">
+      <StyledDiv className="containers">
         {" "}
         <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
         <Link className="link" to={`/stylists/${stylist.id}/pictures`}>
-        View pictures
+          View pictures
         </Link>
         <div className="stylist-info">
           <span>Name:&nbsp;</span>
@@ -111,10 +110,12 @@ export default class StylistProfile extends Component {
           <h4>{stylist.zip}</h4>
         </div>
         <GeoMap className="stylist-map" id={this.props.match.params.id} />
-        <Route
-          path="/stylists/:id/pictures"
-          render={props => <PictureList {...props} />}
-        />
+        <div className="geomap-div">
+          <Route
+            path="/stylists/:id/pictures"
+            render={props => <PictureList {...props} />}
+          />
+        </div>
       </StyledDiv>
     );
   }
