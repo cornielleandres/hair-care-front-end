@@ -88,11 +88,12 @@ class StylistSignUpForm extends Component {
     console.log(this);
     return (
       <StyledForm onSubmit={this.handleSubmit}>
+        <h2>Please Change Your Information</h2>
         <input
           type="text"
           name="profile_photo"
           value={this.state.profile_photo}
-          placeholder="picture of yourself"
+          placeholder="Picture of yourself"
           onChange={this.handleChange}
         />
         <input
