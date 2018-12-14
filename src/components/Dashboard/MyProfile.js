@@ -46,6 +46,11 @@ padding: 20px;
   a:hover {
     color: #4947E5;
   }
+
+  .stylist-pictures {
+    margin: 0 auto;
+    padding-top: 20px;
+  }
 `;
 
 
