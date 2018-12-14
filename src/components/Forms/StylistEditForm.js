@@ -5,16 +5,13 @@ class StylistSignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      stylist: {
-        profile_photo: "",
-        first_name: "",
-        last_name: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        isStylist: true
-      }
+      profile_photo: "",
+      first_name: "",
+      last_name: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: ""
     };
   }
   handleChange = e => {
@@ -31,14 +28,17 @@ class StylistSignUpForm extends Component {
       `${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem(
         "userID"
       )}`,
-      { ...this.state.stylist },
+      { ...this.state },
       headers
     )
-      .then(res => console.log("resse****", res))
+      .then(res =>
+        this.props.history.push(`/profile/${localStorage.getItem("userID")}`)
+      )
       .catch(err => ({ err }));
   };
 
   render() {
+    console.log(this);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
