@@ -9,6 +9,7 @@ import { getStylists } from "../../store/actions/index.js";
 const StyledStylists = styled.div`
   width: 80%;
   display: flex;
+
   flex-direction: column;
   text-align: center;
 

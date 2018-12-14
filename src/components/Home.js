@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 import Image from './Image';
 import axios from 'axios';
+import styled from "styled-components";
+
+const StyledHomeContainer = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+h1 {
+  padding-bottom: 10px;
+}
+`;
 
 export default class Home extends Component {
   state = { pictures: [] };
@@ -17,10 +31,10 @@ export default class Home extends Component {
   render() {
     const { pictures } = this.state;
     return (
-      <div>
+      <StyledHomeContainer className = "home-container">
         <h1>Home</h1>
         { pictures.map((picture, i) => <Image key = {i} picture = {picture} />)}
-      </div>
+      </StyledHomeContainer>
     );
   }
 };

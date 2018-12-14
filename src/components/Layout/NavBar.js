@@ -6,7 +6,9 @@ const StyledNavBar = styled.nav`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background: #1d0b32;
   width: 100%;
+  padding: 0 0 30px;
 
   a, button {
     border: 2px solid #f9899e;
@@ -16,8 +18,6 @@ const StyledNavBar = styled.nav`
       font-size: 1.8rem;
       font-family: 'Muli';
       padding: 10px 20px;
-      margin-top: 20px;
-      margin-bottom: 15px;
       cursor: pointer;
       text-decoration: none;
 
