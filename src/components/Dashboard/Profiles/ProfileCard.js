@@ -4,29 +4,39 @@ import styled from "styled-components";
 const StyledProfileCard = styled.div`
 display: flex;
 justify-content: space-evenly;
-align-items: flex-start
+align-items: center;
 flex-wrap: wrap;
 flex-direction: column;
-border: 5px solid #1d0b32;
+border: 5px solid pink;
 border-radius: 15px;
 margin: 10px 15px;
 padding: 10px 3%;
-width: 300px;
+width: 325px;
+background: #1d0b32;
+
+.stylist-card-img {
+  margin: 15px 0;
+
+  img {
+    border-radius: 15px;
+  }
+}
 
 .stylist-info {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
+  justify-content: flex-start;
 
   span {
     font-size: 1.8rem;
     font-weight: 900;
-    color: black;
+    color: pink;
   }
 }
 
 h4 {
 font-size: 1.8rem;
-  color: #1D0B32;
+  color: pink;
   font-family: 'Muli';
   margin-bottom: 10px;
   
