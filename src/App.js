@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 import loginhero from "./assets/loginhero.jpg";
@@ -9,6 +8,7 @@ import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
 import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
+import MyProfile from "./components/Dashboard/MyProfile";
 // font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -18,8 +18,6 @@ import {
   faHeart
 } from "@fortawesome/free-solid-svg-icons";
 
-// Action creators
-import { getStylists } from "./store/actions/index.js";
 library.add(faEnvelope, faKey, faTimes, faHeart);
 
 const StyledApp = styled.div`
@@ -42,7 +40,7 @@ const StyledApp = styled.div`
   }
 `;
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -52,11 +50,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getStylists(localStorage.getItem("userToken"));
     this.setState({ username: localStorage.getItem("hairCareUsername") });
   }
   render() {
-    const { stylists } = this.props; //deconstructing
     return (
       <StyledApp>
         <Header />
@@ -64,28 +60,24 @@ class App extends Component {
         <h1 className="welcome">Welcome, {this.state.username}!</h1>
         <Route
           path="/home"
-          render={props => <Home {...props} stylists={stylists} />}
+          render={props => <Home {...props} />}
         />
         <Route
           exact
           path="/stylists"
-          render={props => <Stylists {...props} stylists={stylists} />}
+          render={props => <Stylists {...props} />}
         />
 
         <Route
           path="/stylists/:id"
           render={props => <StylistProfile {...props} />}
         />
+
+        <Route
+          path="/profile/:id"
+          render={props => <MyProfile {...props} />}
+        />
       </StyledApp>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  stylists: state.stylists
-});
-
-export default connect(
-  mapStateToProps,
-  { getStylists }
-)(App);

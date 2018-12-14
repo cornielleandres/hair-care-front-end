@@ -17,6 +17,7 @@ const Auth = App => LoginSignUp =>
       });
     };
     handleLogOut = () => {
+      localStorage.removeItem("userID");
       localStorage.removeItem("userToken");
       localStorage.removeItem("hairCareUsername");
       this.setState({ loggedIn: false }, () => {

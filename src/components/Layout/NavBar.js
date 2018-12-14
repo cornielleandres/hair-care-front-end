@@ -38,6 +38,7 @@ const NavBar = props => {
         <NavLink to="/home">Home</NavLink>
         <NavLink to="/stylists">Stylists</NavLink>
         <button onClick={props.handleLogOut}>Log Out</button>
+        <NavLink to={`/profile/${localStorage.getItem("userID")}`}>Profile</NavLink>
     </StyledNavBar>
   );
 };

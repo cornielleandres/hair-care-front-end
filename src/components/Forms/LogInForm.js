@@ -144,6 +144,7 @@ class LogInForm extends Component {
       password
     })
       .then(res => {
+        localStorage.setItem("userID", res.data.id);
         localStorage.setItem("userToken", res.data.token);
         localStorage.setItem("hairCareUsername", username);
         this.setState({
