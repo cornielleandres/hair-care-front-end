@@ -54,6 +54,16 @@ const StylistProfileComp = styled.div`
     margin: 0 auto;
     padding-top: 20px;
   }
+  .edit-upload-btn {
+    border-radius: 15px;
+    border: 2px solid #f9899e;
+    padding: 10px;
+    background: #1d0b32;
+    :hover {
+      background: #f9899e;
+      color: #1d0b32;
+    }
+  }
 `;
 
 const StyledStylistProfileForm = styled.form`
@@ -96,7 +106,7 @@ const StyledStylistProfileForm = styled.form`
     cursor: pointer;
 
     :hover {
-      transform: scale(1.1, 1.1);
+      transform: scale(1.1);
       background-color: #4947e5;
     }
   }
@@ -133,10 +143,12 @@ export default class MyProfile extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+
     this.setState({
       ...this.state,
       loading: !this.state.loading
     });
+
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     Axios.post(
@@ -251,11 +263,17 @@ export default class MyProfile extends Component {
             <span>Zip:&nbsp;</span> <p>{stylist.zip}</p>
           </div>
 
-          <Link to={`/profile/${localStorage.getItem("userID")}/edit`}>
+          <Link
+            className="edit-upload-btn"
+            to={`/profile/${localStorage.getItem("userID")}/edit`}
+          >
             Edit Profile
           </Link>
 
-          <Link to={`/profile/${localStorage.getItem("userID")}/upload`}>
+          <Link
+            className="edit-upload-btn"
+            to={`/profile/${localStorage.getItem("userID")}/upload`}
+          >
             Upload picture
           </Link>
 
@@ -272,47 +290,55 @@ export default class MyProfile extends Component {
       return (
         <StyledStylistProfileForm onSubmit={this.handleSubmit}>
           <h2>Create your stylist profile</h2>
+
           <input
             name="first_name"
             placeholder="First name"
             onChange={this.handleChange}
             value={this.state.stylist.first_name}
+            required
           />
           <input
             name="last_name"
             placeholder="Last name"
             onChange={this.handleChange}
             value={this.state.stylist.last_name}
+            required
           />
           <input
             name="address"
             placeholder="Address"
             onChange={this.handleChange}
             value={this.state.stylist.address}
+            required
           />
           <input
             name="city"
             placeholder="City"
             onChange={this.handleChange}
             value={this.state.stylist.city}
+            required
           />
           <input
             name="state"
             placeholder="State"
             onChange={this.handleChange}
             value={this.state.stylist.state}
+            required
           />
           <input
             name="zip"
             placeholder="Zip"
             onChange={this.handleChange}
             value={this.state.stylist.zip}
+            required
           />
           <input
             name="profile_photo"
             placeholder="Link to profile photo"
             onChange={this.handleChange}
             value={this.state.stylist.profile_photo}
+            required
           />
           <button>{this.state.loading ? "Loading" : "Submit"}</button>
 
