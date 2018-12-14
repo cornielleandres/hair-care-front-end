@@ -19,6 +19,8 @@ background: #1d0b32;
 
   img {
     border-radius: 15px;
+    max-width: 300px;
+    max-height: 300px;
   }
 }
 

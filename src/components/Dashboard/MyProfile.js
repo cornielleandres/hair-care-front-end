@@ -4,7 +4,49 @@ import {Link} from 'react-router-dom';
 import styled from "styled-components";
 
 const StyledStylistProfileForm = styled.form`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 100px;
 
+  input {
+    padding: 15px;
+      border: 3px solid #f9899e;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      width: 100%;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+
+      :focus {
+        outline: none;
+        font-size: 1.8rem;
+        color: #4947e5;
+        font-weight: 800;
+      }
+
+      ::placeholder {
+        font-size: 1.8rem;
+      }
+  }
+
+  button {
+    border: 2px solid #f9899e;
+      border-radius: 15px;
+      background: #1d0b32;
+      color: #f9899e;
+      font-size: 1.8rem;
+      font-family: 'Muli';
+      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+
+      :hover {
+        transform: scale(1.1,1.1);
+        background-color: #4947e5;
+      }
+  }
 `;
 
 export default class MyProfile extends Component {
@@ -16,6 +58,7 @@ export default class MyProfile extends Component {
       city: '',
       state: '',
       zip: '',
+      profile_photo: '',
     },
     exists: false,
   };
