@@ -15,9 +15,7 @@ img {
 }
 `;
 
-const Image = (props) => {
-  console.log('IMAGE', props)
-  const {picture} = props;
+const Image = ({picture}) => {
   return (
     <StyledHomeImgContainer className="home-img-container">
       <img
@@ -27,6 +25,7 @@ const Image = (props) => {
           "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
         }
       />
+      <p>Created at: {picture.created_at}</p>
     </StyledHomeImgContainer>
   );
 };
