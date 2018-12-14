@@ -7,12 +7,21 @@ class Picture extends Component {
   state = {
     comment: "",
     comments: [],
-    likes: 0
+    likes: 0,
+    liked: false
   };
   handleLikes = e => {
-    this.setState({
-      likes: this.state.likes + 1
-    });
+    if (this.state.liked) {
+      this.setState({
+        likes: this.state.likes - 1,
+        liked: !this.state.liked
+      });
+    } else {
+      this.setState({
+        likes: this.state.likes + 1,
+        liked: !this.state.liked
+      });
+    }
   };
   handleChange = e => {
     this.setState({
