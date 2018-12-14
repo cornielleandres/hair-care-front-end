@@ -12,7 +12,6 @@ class StylistSignUpForm extends Component {
       city: "",
       state: "",
       zip: "",
-      contactNumber: "",
       isStylist: true
     };
   }
