@@ -5,12 +5,14 @@ const StyledHomeImgContainer = styled.div`
 width: 100%;
 max-width: 600px;
 display: flex;
+flex-direction: column;
 justify-content: center;
+align-items: center;
 padding-top: 20px;
 
 img {
   margin:0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   border: 5px solid #1d0b32;
   border-radius: 15px;
   max-width: 300px;

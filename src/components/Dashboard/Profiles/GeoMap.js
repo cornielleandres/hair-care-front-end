@@ -7,6 +7,7 @@ const StyledGeoMap = styled.div`
   #map${ ({id}) => `${id}` } {
     width: 300px;
     height: 300px;
+    margin-left: 10px;
   }
 `;
 

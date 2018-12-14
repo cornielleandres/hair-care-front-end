@@ -6,12 +6,51 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 4px;
+  color: #f9899e;
   width: 100%;
+
+  form {
+    display: flex;
+flex-direction: column;
+align-items: center;
+
+    input {
+      padding: 15px;
+        border: 3px solid #f9899e;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 1.8rem;
+        font-family: 'Muli';
+  
+        :focus {
+          outline: none;
+          font-size: 1.8rem;
+          color: #4947e5;
+          font-weight: 800;
+        }
+  
+        ::placeholder {
+          font-size: 1.8rem;
+        }
+    }
+  }
+
+
 `;
 const StyledCommentSection = styled.div`
   display: flex;
+  flex-direction: column;
+align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 class Picture extends Component {
   state = {

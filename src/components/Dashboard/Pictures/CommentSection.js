@@ -1,6 +1,11 @@
 import React from "react";
 import Comment from "./Comment";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledCommentDiv = styled.div`
+width: 100%;
+`;
 
 const CommentSection = props => {
   const deleteComments = id => {
@@ -18,7 +23,7 @@ const CommentSection = props => {
   };
   const { comments } = props;
   return (
-    <div className="container">
+    <StyledCommentDiv>
       {comments.map((comment, i) => (
         <Comment
           key={i}
@@ -26,7 +31,7 @@ const CommentSection = props => {
           deleteComments={() => deleteComments(comment.id)}
         />
       ))}
-    </div>
+    </StyledCommentDiv>
   );
 }
 
