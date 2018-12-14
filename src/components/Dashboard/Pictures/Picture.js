@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentSection from "./CommentSection";
+import Image from '../../Image';
 import axios from "axios";
 class Picture extends Component {
   state = {
@@ -12,11 +13,13 @@ class Picture extends Component {
   handleLikes = e => {
     if (this.state.liked) {
       this.setState({
+        ...this.state,
         likes: this.state.likes - 1,
         liked: !this.state.liked
       });
     } else {
       this.setState({
+        ...this.state,
         likes: this.state.likes + 1,
         liked: !this.state.liked
       });
@@ -24,6 +27,7 @@ class Picture extends Component {
   };
   handleChange = e => {
     this.setState({
+      ...this.state,
       [e.target.name]: e.target.value
     });
   };
@@ -38,14 +42,16 @@ class Picture extends Component {
         headers
       )
       .then(res => {
-        this.setState({ comments: res.data });
+        this.setState({
+          ...this.state,
+          comments: res.data
+        });
       })
       .catch();
   };
   getPictureLikes = () => {
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
-    // console.log("likes pic ", this.props.picture.id);
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/api/likes/picture/${
@@ -55,13 +61,13 @@ class Picture extends Component {
       )
       .then(res => {
         this.setState({
-          likes: res.data[0].likes
+          ...this.state,
+          likes: res.data.length > 0 ? res.data[0].likes : 0
         });
       });
   };
   addComments = e => {
     e.preventDefault();
-    // console.log(this.state);
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     axios
@@ -86,13 +92,14 @@ class Picture extends Component {
     // console.log("likes", this.props);
     return (
       <div className="box">
-        <img
+        {/* <img
           src={
             this.props.picture.picture ||
             "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
           }
           alt="alt"
-        />
+        /> */}
+        <Image picture = { this.props.picture } />
         <p onClick={this.handleLikes}>
           <FontAwesomeIcon icon="heart" /> {this.state.likes}
         </p>
