@@ -11,7 +11,7 @@ export default class MyProfile extends Component {
       state: '',
       zip: '',
     },
-    exists: true,
+    exists: false,
   };
   handleChange = e => {
     this.setState({
@@ -36,20 +36,24 @@ export default class MyProfile extends Component {
     Axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem("userID")}`)
       .then(res => {
-        if (!res.data.length) {
-          this.setState({ exists: false});
-        } else {
-          console.log('res.data has length', res)
+        if (res.data.length) {
+          this.setState({ exists: true, stylist: res.data[0] });
         }
       })
       .catch(err => console.log(err.response))
   }
   render() {
-    const { exists } = this.state;
+    const { exists, stylist } = this.state;
     if (exists) {
       return(
         <div>
-          MyProfile exists
+          <img src = {stylist.profile_photo} alt = {`${stylist.first_name}`} />
+          <p>First Name: {stylist.first_name}</p>
+          <p>Last Name: {stylist.last_name}</p>
+          <p>Address: {stylist.address}</p>
+          <p>City: {stylist.city}</p>
+          <p>State: {stylist.state}</p>
+          <p>Zip: {stylist.zip}</p>
         </div>
       );
     } else {
