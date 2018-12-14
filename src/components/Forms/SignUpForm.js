@@ -22,7 +22,7 @@ const StyledSignUpForm = styled.div`
   h1 {
     font-size: 4rem;
     margin-bottom: 40px;
-    font-family: 'Fredoka One';
+    font-family: "Fredoka One";
   }
 
   form {
@@ -54,14 +54,15 @@ const StyledSignUpForm = styled.div`
       }
     }
 
-    input[type="text"], input[type="password"] {
+    input[type="text"],
+    input[type="password"] {
       padding: 15px;
       border: 3px solid #f9899e;
       border-radius: 12px;
       margin-bottom: 25px;
       width: 90%;
       font-size: 1.8rem;
-      font-family: 'Muli';
+      font-family: "Muli";
 
       @media (max-width: 800px) {
         width: 80%;
@@ -78,14 +79,14 @@ const StyledSignUpForm = styled.div`
       background: #1d0b32;
       color: #f9899e;
       font-size: 1.8rem;
-      font-family: 'Muli';
+      font-family: "Muli";
       padding: 10px 20px;
       margin-top: 20px;
       margin-bottom: 15px;
       cursor: pointer;
 
       :hover {
-        transform: scale(1.1,1.1);
+        transform: scale(1.1, 1.1);
         background-color: #4947e5;
       }
     }
@@ -93,7 +94,7 @@ const StyledSignUpForm = styled.div`
 
   .login-btn {
     color: #f9899e;
-    font-family: 'Muli';
+    font-family: "Muli";
     font-size: 1.4rem;
 
     :hover {
@@ -107,6 +108,7 @@ class SignUpForm extends Component {
     this.state = {
       username: "",
       password: "",
+      loading: false
     };
   }
   handleInputChange = e => {
@@ -114,17 +116,16 @@ class SignUpForm extends Component {
       [e.target.name]: e.target.value
     });
   };
-  // handleRadio = e => {
-  //   this.setState({
-  //     [e.target.name]: Boolean(e.target.value)
-  //   });
-  // };
+
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({
+      loading: !this.state.loading
+    });
     const { username, password } = this.state;
     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
       username,
-      password,
+      password
     })
       .then(res => {
         const { username, password } = this.state;
@@ -137,6 +138,9 @@ class SignUpForm extends Component {
             localStorage.setItem("userToken", res.data.token);
             localStorage.setItem("hairCareUsername", username);
             this.props.handleLogIn();
+            this.setState({
+              loading: !this.state.loading
+            });
           })
           .catch(err => console.log("login POST ERR", err));
       })
@@ -171,7 +175,7 @@ class SignUpForm extends Component {
             />
           </div>
           <button className="signup-btn" type="submit">
-            Sign Up
+            {this.state.loading ? "Loading" : "Sign Up"}
           </button>
         </form>
         <Link className="login-btn" to="/">
