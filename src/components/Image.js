@@ -30,7 +30,7 @@ const Image = ({picture}) => {
           "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
         }
       />
-      {/* <p>Created at: {picture.created_at}</p> */}
+      <p>Created at: {picture.created_at}</p>
     </StyledHomeImgContainer>
   );
 };

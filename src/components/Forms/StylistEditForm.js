@@ -125,7 +125,6 @@ class StylistSignUpForm extends Component {
           onChange={this.handleChange}
         />
         <input
-          type="text"
           name="state"
           value={this.state.state}
           type="text"
