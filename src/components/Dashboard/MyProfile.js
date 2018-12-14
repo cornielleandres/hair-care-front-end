@@ -157,7 +157,7 @@ export default class MyProfile extends Component {
                 this.setState({
                   ...this.state,
                   pictures: res.data,
-                }, () => console.log('new state in pics', this.state));
+                });
               })
               .catch(err => console.log(err.response))
           });
@@ -194,7 +194,7 @@ export default class MyProfile extends Component {
 
           <Link to = {`/profile/${localStorage.getItem('userID')}/upload`}>Upload picture</Link>
 
-          <p class="stylist-pictures">{stylist.first_name}'s pictures</p>
+          <p className="stylist-pictures">{stylist.first_name}'s pictures</p>
 
           {
             pictures.length <= 0

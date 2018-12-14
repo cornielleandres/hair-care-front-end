@@ -72,29 +72,6 @@ const StyledSignUpForm = styled.div`
       }
     }
 
-    label {
-      font-family: 'Muli';
-      font-size: 1.4rem;
-    }
-
-
-    .radio-container {
-      justify-content: center;
-      align-items: center;
-      padding: 10px 0;
-
-      input[type="radio"] {
-        margin-right: 10px;
-      }
-
-      h4 {
-        font-family: 'Muli';
-        font-size: 1.4rem;
-        margin-right: 20px;
-        margin-bottom: 0;
-      }
-    }
-
     .signup-btn {
       border: 2px solid #f9899e;
       border-radius: 15px;
@@ -130,7 +107,6 @@ class SignUpForm extends Component {
     this.state = {
       username: "",
       password: "",
-      isStylist: false
     };
   }
   handleInputChange = e => {
@@ -138,18 +114,17 @@ class SignUpForm extends Component {
       [e.target.name]: e.target.value
     });
   };
-  handleRadio = e => {
-    this.setState({
-      [e.target.name]: Boolean(e.target.value)
-    });
-  };
+  // handleRadio = e => {
+  //   this.setState({
+  //     [e.target.name]: Boolean(e.target.value)
+  //   });
+  // };
   handleSubmit = e => {
     e.preventDefault();
-    const { username, password, isStylist } = this.state;
+    const { username, password } = this.state;
     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
       username,
       password,
-      isStylist
     })
       .then(res => {
         const { username, password } = this.state;
@@ -194,25 +169,6 @@ class SignUpForm extends Component {
               onChange={this.handleInputChange}
               required
             />
-          </div>
-          <label htmlFor="isStylist">Are you a Stylist?</label>
-          <div className="radio-container">
-            <input
-              type="radio"
-              name="isStylist"
-              value="true"
-              onChange={this.handleRadio}
-              required
-            />
-            <h4>Yes</h4>
-            <input
-              type="radio"
-              name="isStylist"
-              value="false"
-              onChange={this.handleRaiod}
-              required
-            />
-            <h4>No</h4>
           </div>
           <button className="signup-btn" type="submit">
             Sign Up
