@@ -89,7 +89,7 @@ export default class StylistProfile extends Component {
       <StyledDiv className="container">
         
           {" "}
-          
+
             <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
             <Link className="link" to={`/stylists/${stylist.id}/pictures`}>
           View pictures

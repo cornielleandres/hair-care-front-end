@@ -34,22 +34,17 @@ padding: 20px;
     font-weight: 900;
     color: #f9899e;
   }
-
-  p {
-    font-size: 1.8rem;
-  color: #f9899e;
-  font-family: 'Muli';
-  }
   }
 
-  a {
+  a, p {
     color: #f9899e;
     font-size: 1.8rem;
     padding: 0 15px;
+    margin-bottom: 15px;
+  }
 
-    :hover {
-      color: #4947E5;
-    }
+  a:hover {
+    color: #4947E5;
   }
 `;
 
@@ -194,7 +189,7 @@ export default class MyProfile extends Component {
 
           <Link to = {`/profile/${localStorage.getItem('userID')}/upload`}>Upload picture</Link>
 
-          <p>{stylist.first_name}'s pictures</p>
+          <p class="stylist-pictures">{stylist.first_name}'s pictures</p>
 
           {
             pictures.length <= 0
