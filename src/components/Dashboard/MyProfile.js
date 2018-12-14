@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import { Link } from 'react-router-dom';
 
 export default class MyProfile extends Component {
   state = {
@@ -27,9 +28,7 @@ export default class MyProfile extends Component {
     const headers = { headers: { Authorization: `${token}` } };
     Axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem('userID')}`, { ...this.state.stylist }, headers)
-      .then(res => {
-        console.log(res)
-      })
+      .then(res => {/* do nothing */})
       .catch(err => console.log(err.response))
   }
   componentDidMount() {
@@ -54,6 +53,8 @@ export default class MyProfile extends Component {
           <p>City: {stylist.city}</p>
           <p>State: {stylist.state}</p>
           <p>Zip: {stylist.zip}</p>
+
+          <Link to = {`/profile/${localStorage.getItem('userID')}/edit`}>Edit Profile</Link>
         </div>
       );
     } else {
@@ -95,6 +96,12 @@ export default class MyProfile extends Component {
             placeholder = 'Zip'
             onChange = {this.handleChange}
             value = {this.state.stylist.zip}
+          />
+          <input
+            name = 'profile_photo'
+            placeholder = 'Link to profile photo'
+            onChange = {this.handleChange}
+            value = {this.state.stylist.profile_photo}
           />
           <button>Submit</button>
         </form>
