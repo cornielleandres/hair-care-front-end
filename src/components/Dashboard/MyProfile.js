@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import styled from "styled-components";
+
+const StyledStylistProfileForm = styled.form`
+
+`;
 
 export default class MyProfile extends Component {
   state = {
@@ -27,9 +32,7 @@ export default class MyProfile extends Component {
     const headers = { headers: { Authorization: `${token}` } };
     Axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem('userID')}`, { ...this.state.stylist }, headers)
-      .then(res => {
-        console.log(res)
-      })
+      .then(res => {/* do nothing */})
       .catch(err => console.log(err.response))
   }
   componentDidMount() {
@@ -54,11 +57,13 @@ export default class MyProfile extends Component {
           <p>City: {stylist.city}</p>
           <p>State: {stylist.state}</p>
           <p>Zip: {stylist.zip}</p>
+
+          <Link to = {`/profile/${localStorage.getItem('userID')}/edit`}>Edit Profile</Link>
         </div>
       );
     } else {
       return(
-        <form onSubmit = {this.handleSubmit}>
+        <StyledStylistProfileForm onSubmit = {this.handleSubmit}>
           <h2>Create your stylist profile</h2>
           <input
             name = 'first_name'
@@ -96,8 +101,14 @@ export default class MyProfile extends Component {
             onChange = {this.handleChange}
             value = {this.state.stylist.zip}
           />
+          <input
+            name = 'profile_photo'
+            placeholder = 'Link to profile photo'
+            onChange = {this.handleChange}
+            value = {this.state.stylist.profile_photo}
+          />
           <button>Submit</button>
-        </form>
+        </StyledStylistProfileForm>
       );
     }
   }
