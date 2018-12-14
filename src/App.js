@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Route } from "react-router-dom";
 import loginhero from "./assets/loginhero.jpg";
 // Components
-import { Header } from "./components/index.js";
+import { Header } from "./components/Layout/Header";
 import NavBar from "./components/Layout/NavBar";
 import Home from "./components/Home";
 import Stylists from "./components/Dashboard/Stylists.js";

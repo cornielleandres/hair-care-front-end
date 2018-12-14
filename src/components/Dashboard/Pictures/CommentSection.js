@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import Comment from "./Comment";
 import axios from "axios";
-class CommentSection extends Component {
-  deleteComments = id => {
-    console.log("delete", id);
-    console.log("IN DELETE", this.props);
+
+const CommentSection = props => {
+  const deleteComments = id => {
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
 
@@ -14,47 +13,21 @@ class CommentSection extends Component {
         headers
       )
       .then(res => {
-        console.log("deleteComments", res);
-        this.props.getAllPictureComments();
+        props.getAllPictureComments();
       });
-    // console.log("the rest of the comments", dcomment);
-    // // TODO DELETE COMMENTS ONCE BACKEND HAS INFO
-    // this.setState({
-    //   ...this.state,
-    //   pictures: dcomment
-    // });
   };
-  // getAllPictureComments = () => {
-  //   const token = localStorage.getItem("userToken");
-  //   const headers = { headers: { Authorization: `${token}` } };
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_BACKEND_URL}/api/comments/picture/${
-  //         this.props.picture
-  //       }`,
-  //       headers
-  //     )
-  //     .then(res => {
-  //       this.setState({ comments: res.data });
-  //     })
-  //     .catch();
-  // }
-  componentDidMount() {
-    // this.getAllPictureComments();
-  }
-  render() {
-    const { comments } = this.props;
-    return (
-      <div className="container">
-        {comments.map((comment, i) => (
-          <Comment
-            key={i}
-            comment={comment}
-            deleteComments={() => this.deleteComments(comment.id)}
-          />
-        ))}
-      </div>
-    );
-  }
+  const { comments } = props;
+  return (
+    <div className="container">
+      {comments.map((comment, i) => (
+        <Comment
+          key={i}
+          comment={comment}
+          deleteComments={() => deleteComments(comment.id)}
+        />
+      ))}
+    </div>
+  );
 }
+
 export default CommentSection;

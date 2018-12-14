@@ -37,13 +37,11 @@ const Auth = App => LoginSignUp =>
         );
     };
     componentDidMount() {
-      console.log("auth");
       if (localStorage.getItem("userToken")) {
         this.handleLogIn();
       }
     }
     render() {
-      console.log("render auth");
       const { loggedIn, username } = this.state;
       return loggedIn ? (
         <Route

@@ -157,7 +157,6 @@ class LogInForm extends Component {
       );
   };
   render() {
-    console.log("login");
     return (
       <StyledLoginComp>
         <h1>Log In</h1>

@@ -13,13 +13,11 @@ export default class PictureList extends Component {
     axios
       .get(URL, headers)
       .then(res => {
-        console.log("cdm piclist", res);
         this.setState({ pictures: res.data });
       })
       .catch(err => console.log(err.response));
   }
   render() {
-    console.log("PLIST", this.state);
     const { pictures } = this.state;
     return (
       <div className="container">

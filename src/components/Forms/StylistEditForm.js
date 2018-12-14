@@ -70,12 +70,16 @@ class StylistSignUpForm extends Component {
     e.preventDefault();
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
+    const newInfo = { ...this.state };
+    if (newInfo['profile_photo'] === "") {
+      delete newInfo['profile_photo'];
+    }
 
     Axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem(
         "userID"
       )}`,
-      { ...this.state },
+      newInfo,
       headers
     )
       .then(res =>
@@ -84,8 +88,26 @@ class StylistSignUpForm extends Component {
       .catch(err => ({ err }));
   };
 
+  componentDidMount() {
+    Axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem(
+        "userID"
+      )}`)
+      .then(res => {
+        const { first_name, last_name, address, city, state, zip } = res.data[0];
+        this.setState({
+          first_name,
+          last_name,
+          address,
+          city,
+          state,
+          zip,
+        });
+      })
+      .catch(err => console.log(err.response));
+  }
+
   render() {
-    console.log(this);
     return (
       <StyledForm onSubmit={this.handleSubmit}>
         <h2>Please Change Your Information</h2>
@@ -98,7 +120,7 @@ class StylistSignUpForm extends Component {
         />
         <input
           name="first_name"
-          value={this.state.username}
+          value={this.state.first_name}
           type="text"
           placeholder="First Name"
           onChange={this.handleChange}

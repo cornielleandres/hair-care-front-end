@@ -146,7 +146,6 @@ class SignUpForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { username, password, isStylist } = this.state;
-    console.log(this.state);
     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
       username,
       password,

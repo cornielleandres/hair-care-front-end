@@ -153,7 +153,6 @@ export default class MyProfile extends Component {
             Axios
               .get(`${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${localStorage.getItem("userID")}`, headers)
               .then(res => {
-                console.log('THIS USERS PICS', res.data)
                 this.setState({
                   ...this.state,
                   pictures: res.data,

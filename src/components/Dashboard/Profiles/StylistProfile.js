@@ -77,46 +77,40 @@ export default class StylistProfile extends Component {
         headers
       )
       .then(res => {
-        console.log("Sprofile", res.data);
         this.setState({ stylist: res.data[0] });
       })
       .catch(err => console.log(err.response));
   }
   render() {
     const { stylist } = this.state;
-    console.log("picture", stylist.profile_photo);
     return (
       <StyledDiv className="container">
-        
-          {" "}
-
-            <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
-            <Link className="link" to={`/stylists/${stylist.id}/pictures`}>
-          View pictures
+        {" "}
+        <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
+        <Link className="link" to={`/stylists/${stylist.id}/pictures`}>
+        View pictures
         </Link>
-          <div className="stylist-info">
-            <span>Name:&nbsp;</span>
-            <h4>{stylist.first_name}</h4>
-          </div>
-          <div className="stylist-info">
-            <span>Address:&nbsp;</span>
-            <h4>{stylist.address}</h4>
-          </div>
-          <div className="stylist-info">
-            <span>City:&nbsp;</span>
-            <h4>{stylist.city}</h4>
-          </div>
-          <div className="stylist-info">
-            <span>State:&nbsp;</span>
-            <h4>{stylist.state}</h4>
-          </div>
-          <div className="stylist-info">
-            <span>Zip:&nbsp;</span>
-            <h4>{stylist.zip}</h4>
-          </div>
-          <GeoMap className="stylist-map" id={this.props.match.params.id} />
-        
-       
+        <div className="stylist-info">
+          <span>Name:&nbsp;</span>
+          <h4>{stylist.first_name}</h4>
+        </div>
+        <div className="stylist-info">
+          <span>Address:&nbsp;</span>
+          <h4>{stylist.address}</h4>
+        </div>
+        <div className="stylist-info">
+          <span>City:&nbsp;</span>
+          <h4>{stylist.city}</h4>
+        </div>
+        <div className="stylist-info">
+          <span>State:&nbsp;</span>
+          <h4>{stylist.state}</h4>
+        </div>
+        <div className="stylist-info">
+          <span>Zip:&nbsp;</span>
+          <h4>{stylist.zip}</h4>
+        </div>
+        <GeoMap className="stylist-map" id={this.props.match.params.id} />
         <Route
           path="/stylists/:id/pictures"
           render={props => <PictureList {...props} />}
