@@ -1,8 +1,59 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Image from '../Image';
+
+const StylistProfileComp = styled.div`
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+background: #1d0b32;
+width: 325px;
+border-radius: 15px;
+border: 5px solid #f9899e;
+padding: 20px;
+
+  img {
+    max-width: 300px;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+
+  .my-profile-info {
+    display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  padding: 0 15px;
+
+  span {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #f9899e;
+  }
+
+  p {
+    font-size: 1.8rem;
+  color: #f9899e;
+  font-family: 'Muli';
+  }
+  }
+
+  a {
+    color: #f9899e;
+    font-size: 1.8rem;
+    padding: 0 15px;
+
+    :hover {
+      color: #4947E5;
+    }
+  }
+`;
+
+
 
 const StyledStylistProfileForm = styled.form`
 display: flex;
@@ -117,17 +168,29 @@ export default class MyProfile extends Component {
   render() {
     const { exists, stylist, pictures } = this.state;
     if (exists) {
-      return(
-        <div>
-          <img src = {stylist.profile_photo} alt = {`${stylist.first_name}`} />
-          <p>First Name: {stylist.first_name}</p>
-          <p>Last Name: {stylist.last_name}</p>
-          <p>Address: {stylist.address}</p>
-          <p>City: {stylist.city}</p>
-          <p>State: {stylist.state}</p>
-          <p>Zip: {stylist.zip}</p>
+      return (
+        <StylistProfileComp>
+          <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
+          <div className="my-profile-info">
+            <span>First Name:&nbsp;</span> <p>{stylist.first_name}</p>
+          </div>
+          <div className="my-profile-info">
+            <span>Last Name:&nbsp;</span>  <p>{stylist.last_name}</p>
+          </div>
+          <div className="my-profile-info">
+            <span>Address:&nbsp;</span>  <p>{stylist.address}</p>
+          </div>
+          <div className="my-profile-info">
+            <span>City:&nbsp;</span>  <p>{stylist.city}</p>
+          </div>
+          <div className="my-profile-info">
+            <span>State:&nbsp;</span>  <p>{stylist.state}</p>
+          </div>
+          <div className="my-profile-info">
+            <span>Zip:&nbsp;</span>  <p>{stylist.zip}</p>
+          </div>
 
-          <Link to = {`/profile/${localStorage.getItem('userID')}/edit`}>Edit Profile</Link>
+          <Link to={`/profile/${localStorage.getItem('userID')}/edit`}>Edit Profile</Link>
 
           <Link to = {`/profile/${localStorage.getItem('userID')}/upload`}>Upload picture</Link>
 
@@ -140,54 +203,53 @@ export default class MyProfile extends Component {
             :
             pictures.map((picture, i) => <Image key = { i } picture = { picture } />)
           }
-
-        </div>
+        </StylistProfileComp>
       );
     } else {
-      return(
-        <StyledStylistProfileForm onSubmit = {this.handleSubmit}>
+      return (
+        <StyledStylistProfileForm onSubmit={this.handleSubmit}>
           <h2>Create your stylist profile</h2>
           <input
-            name = 'first_name'
-            placeholder = 'First name'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.first_name}
+            name='first_name'
+            placeholder='First name'
+            onChange={this.handleChange}
+            value={this.state.stylist.first_name}
           />
           <input
-            name = 'last_name'
-            placeholder = 'Last name'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.last_name}
+            name='last_name'
+            placeholder='Last name'
+            onChange={this.handleChange}
+            value={this.state.stylist.last_name}
           />
           <input
-            name = 'address'
-            placeholder = 'Address'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.address}
+            name='address'
+            placeholder='Address'
+            onChange={this.handleChange}
+            value={this.state.stylist.address}
           />
           <input
-            name = 'city'
-            placeholder = 'City'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.city}
+            name='city'
+            placeholder='City'
+            onChange={this.handleChange}
+            value={this.state.stylist.city}
           />
           <input
-            name = 'state'
-            placeholder = 'State'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.state}
+            name='state'
+            placeholder='State'
+            onChange={this.handleChange}
+            value={this.state.stylist.state}
           />
           <input
-            name = 'zip'
-            placeholder = 'Zip'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.zip}
+            name='zip'
+            placeholder='Zip'
+            onChange={this.handleChange}
+            value={this.state.stylist.zip}
           />
           <input
-            name = 'profile_photo'
-            placeholder = 'Link to profile photo'
-            onChange = {this.handleChange}
-            value = {this.state.stylist.profile_photo}
+            name='profile_photo'
+            placeholder='Link to profile photo'
+            onChange={this.handleChange}
+            value={this.state.stylist.profile_photo}
           />
           <button>Submit</button>
         </StyledStylistProfileForm>
