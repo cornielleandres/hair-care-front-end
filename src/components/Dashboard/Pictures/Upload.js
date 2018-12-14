@@ -79,7 +79,7 @@ export default class Upload extends Component {
       loading: !this.state.loading,
     }, () => {
       Axios
-			.post(`${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${localStorage.getItem('userID')}`, { picture: this.state.picture, user_id: localStorage.getItem('userID') }, headers)
+			.post(`${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${localStorage.getItem('userID')}`, { picture: this.state.picture, user_id: localStorage.getItem('userID'), created_at: Date.now() }, headers)
 			.then(res => {
         this.props.history.push(`/profile/${localStorage.getItem("userID")}`);
         this.setState({

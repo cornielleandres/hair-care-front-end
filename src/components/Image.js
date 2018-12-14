@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import moment from 'moment';
 
 const StyledHomeImgContainer = styled.div`
 width: 100%;
@@ -23,7 +24,6 @@ img {
 `;
 
 const Image = ({picture}) => {
-  console.log("IMAGE", picture);
   return (
     <StyledHomeImgContainer className="home-img-container">
       <img
@@ -33,7 +33,7 @@ const Image = ({picture}) => {
           "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
         }
       />
-      <p>Created at: {picture.created_at}</p>
+      <p>{moment(picture.created_at).fromNow()}</p>
     </StyledHomeImgContainer>
   );
 };
