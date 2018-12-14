@@ -6,9 +6,14 @@ import axios from "axios";
 class Picture extends Component {
   state = {
     comment: "",
-    comments: []
+    comments: [],
+    likes: 0
   };
-
+  handleLikes = e => {
+    this.setState({
+      likes: this.state.likes + 1
+    });
+  };
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -32,17 +37,23 @@ class Picture extends Component {
   getPictureLikes = () => {
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
+    // console.log("likes pic ", this.props.picture.id);
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/api/likes/picture/${
           this.props.picture.id
-        }`
+        }`,
+        headers
       )
-      .then();
+      .then(res => {
+        this.setState({
+          likes: res.data[0].likes
+        });
+      });
   };
   addComments = e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     axios
@@ -61,9 +72,10 @@ class Picture extends Component {
   };
   componentDidMount() {
     this.getAllPictureComments();
+    this.getPictureLikes();
   }
   render() {
-    console.log("likes", this.props);
+    // console.log("likes", this.props);
     return (
       <div className="box">
         <img
@@ -73,9 +85,8 @@ class Picture extends Component {
           }
           alt="alt"
         />
-        <FontAwesomeIcon icon="heart" />
-        <p onClick={() => this.getPictureLikes(this.props.picture.id)}>
-          Likes: {this.props.picture.likes || 0}
+        <p onClick={this.handleLikes}>
+          <FontAwesomeIcon icon="heart" /> {this.state.likes}
         </p>
         <CommentSection
           comments={this.state.comments}
