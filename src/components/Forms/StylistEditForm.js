@@ -5,14 +5,16 @@ class StylistSignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      profile_photo: "",
-      first_name: "",
-      last_name: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      isStylist: true
+      stylist: {
+        profile_photo: "",
+        first_name: "",
+        last_name: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        isStylist: true
+      }
     };
   }
   handleChange = e => {
@@ -22,10 +24,20 @@ class StylistSignUpForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/stylists`, {})
-      .then(res => console.log(res))
+    const token = localStorage.getItem("userToken");
+    const headers = { headers: { Authorization: `${token}` } };
+
+    Axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem(
+        "userID"
+      )}`,
+      { ...this.state.stylist },
+      headers
+    )
+      .then(res => console.log("resse****", res))
       .catch(err => ({ err }));
   };
+
   render() {
     return (
       <div>
@@ -65,7 +77,6 @@ class StylistSignUpForm extends Component {
             placeholder="City"
             onChange={this.handleChange}
           />
-          <input type="text" />
           <input
             type="text"
             name="state"
@@ -81,7 +92,6 @@ class StylistSignUpForm extends Component {
             placeholder="Zip"
             onChange={this.handleChange}
           />
-          <input type="text" placeholder="" />
 
           <button type="submit">Edit Information</button>
         </form>
