@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Image from "../Image";
+import loading_gif from '../../assets/loading_gif.gif';
 
 const StylistProfileComp = styled.div`
   display: flex;
@@ -99,6 +100,11 @@ const StyledStylistProfileForm = styled.form`
       background-color: #4947e5;
     }
   }
+
+  .loading-gif {
+    position: fixed;
+    bottom: 40%;
+  }
 `;
 
 export default class MyProfile extends Component {
@@ -141,11 +147,12 @@ export default class MyProfile extends Component {
       headers
     )
       .then(res => {
-        Axios.get(
-          `${
-            process.env.REACT_APP_BACKEND_URL
-          }/api/stylists/${localStorage.getItem("userID")}`
-        )
+        Axios
+          .get(
+            `${
+              process.env.REACT_APP_BACKEND_URL
+            }/api/stylists/${localStorage.getItem("userID")}`
+          )
           .then(res => {
             if (res.data.length) {
               this.setState({
@@ -154,11 +161,28 @@ export default class MyProfile extends Component {
                 stylist: res.data[0],
                 loading: !this.state.loading
               });
+            } else {
+              this.setState({
+                ...this.state,
+                loading: !this.state.loading,
+              });
             }
           })
-          .catch(err => console.log(err.response));
+          .catch(err => {
+            console.log(err.response);
+            this.setState({
+              ...this.state,
+              loading: !this.state.loading,
+            });
+          });
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+        console.log(err.response);
+        this.setState({
+          ...this.state,
+          loading: !this.state.loading,
+        });
+      });
   };
   componentDidMount() {
     const token = localStorage.getItem("userToken");
@@ -197,11 +221,17 @@ export default class MyProfile extends Component {
     if (exists) {
       return (
         <StylistProfileComp>
-          <img
-            className="profile-photo"
-            src={stylist.profile_photo}
-            alt={`${stylist.first_name}`}
-          />
+          {
+            stylist.profile_photo
+            ?
+            <img
+              className="profile-photo"
+              src={stylist.profile_photo}
+              alt={`${stylist.first_name}`}
+            />
+            :
+            <p>This user has no profile pic :(</p>
+          }
           <div className="my-profile-info">
             <span>First Name:&nbsp;</span> <p>{stylist.first_name}</p>
           </div>
@@ -285,6 +315,14 @@ export default class MyProfile extends Component {
             value={this.state.stylist.profile_photo}
           />
           <button>{this.state.loading ? "Loading" : "Submit"}</button>
+
+          {
+            this.state.loading &&
+            // <div className = 'loading-overlay'>
+            //   <img src = {loading_gif} alt = 'loading' />
+            // </div>
+            <img className = 'loading-gif' src = {loading_gif} alt = 'loading' />
+          }
         </StyledStylistProfileForm>
       );
     }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import loading_gif from '../../assets/loading_gif.gif';
 
 const StyledSignUpForm = styled.div`
   display: flex;
@@ -101,6 +102,18 @@ const StyledSignUpForm = styled.div`
       color: #4947e5;
     }
   }
+
+  .loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    color: white;
+  }
 `;
 class SignUpForm extends Component {
   constructor() {
@@ -121,30 +134,33 @@ class SignUpForm extends Component {
     e.preventDefault();
     this.setState({
       loading: !this.state.loading
-    });
-    const { username, password } = this.state;
-    Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
-      username,
-      password
-    })
-      .then(res => {
-        const { username, password } = this.state;
-        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
+    }, () => {
+      const { username, password } = this.state;
+      Axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
           username,
           password
         })
-          .then(res => {
-            localStorage.setItem("userID", res.data.id);
-            localStorage.setItem("userToken", res.data.token);
-            localStorage.setItem("hairCareUsername", username);
-            this.props.handleLogIn();
-            this.setState({
-              loading: !this.state.loading
-            });
+        .then(res => {
+          const { username, password } = this.state;
+          Axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
+            username,
+            password
           })
-          .catch(err => console.log("login POST ERR", err));
-      })
-      .catch(err => console.log(err));
+            .then(res => {
+              localStorage.setItem("userID", res.data.id);
+              localStorage.setItem("userToken", res.data.token);
+              localStorage.setItem("hairCareUsername", username);
+              this.setState({
+                loading: !this.state.loading
+              }, () => {
+                this.props.handleLogIn();
+              });
+            })
+            .catch(err => console.log("login POST ERR", err));
+        })
+        .catch(err => console.log(err));
+    });
   };
 
   render() {
@@ -181,9 +197,14 @@ class SignUpForm extends Component {
         <Link className="login-btn" to="/">
           Click here to log in
         </Link>
+        {
+          this.state.loading &&
+          <div className = 'loading-overlay'>
+            <img src = {loading_gif} alt = 'loading' />
+          </div>
+        }
       </StyledSignUpForm>
     );
-    // }
   }
 }
 
