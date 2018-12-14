@@ -183,7 +183,6 @@ class SignUpForm extends Component {
         </Link>
       </StyledSignUpForm>
     );
-    // }
   }
 }
 
