@@ -138,7 +138,6 @@ class Picture extends Component {
     this.getPictureLikes();
   }
   render() {
-    console.log("PICTURE", this.state);
     return (
       <StyledDiv>
         <Image picture = { this.props.picture } />

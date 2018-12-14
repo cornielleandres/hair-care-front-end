@@ -128,6 +128,7 @@ export default class MyProfile extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({
+      ...this.state,
       loading: !this.state.loading
     });
     const token = localStorage.getItem("userToken");
