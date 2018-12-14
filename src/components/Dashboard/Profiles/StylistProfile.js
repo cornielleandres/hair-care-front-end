@@ -83,7 +83,7 @@ export default class StylistProfile extends Component {
   render() {
     const { stylist } = this.state;
     return (
-      <StyledDiv className="containers">
+      <StyledDiv className="container">
         {" "}
         <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
         <Link className="link" to={`/stylists/${stylist.id}/pictures`}>

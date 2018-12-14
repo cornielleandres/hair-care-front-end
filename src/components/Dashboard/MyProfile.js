@@ -127,9 +127,11 @@ export default class MyProfile extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+
     this.setState({
       loading: !this.state.loading
     });
+
     const token = localStorage.getItem("userToken");
     const headers = { headers: { Authorization: `${token}` } };
     Axios.post(
@@ -241,47 +243,55 @@ export default class MyProfile extends Component {
       return (
         <StyledStylistProfileForm onSubmit={this.handleSubmit}>
           <h2>Create your stylist profile</h2>
+
           <input
             name="first_name"
             placeholder="First name"
             onChange={this.handleChange}
             value={this.state.stylist.first_name}
+            required
           />
           <input
             name="last_name"
             placeholder="Last name"
             onChange={this.handleChange}
             value={this.state.stylist.last_name}
+            required
           />
           <input
             name="address"
             placeholder="Address"
             onChange={this.handleChange}
             value={this.state.stylist.address}
+            required
           />
           <input
             name="city"
             placeholder="City"
             onChange={this.handleChange}
             value={this.state.stylist.city}
+            required
           />
           <input
             name="state"
             placeholder="State"
             onChange={this.handleChange}
             value={this.state.stylist.state}
+            required
           />
           <input
             name="zip"
             placeholder="Zip"
             onChange={this.handleChange}
             value={this.state.stylist.zip}
+            required
           />
           <input
             name="profile_photo"
             placeholder="Link to profile photo"
             onChange={this.handleChange}
             value={this.state.stylist.profile_photo}
+            required
           />
           <button>{this.state.loading ? "Loading" : "Submit"}</button>
         </StyledStylistProfileForm>
