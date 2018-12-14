@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import PictureList from "../Pictures/PictureList";
 import axios from "axios";
-
 import GeoMap from "./GeoMap.js";
-
+import styled from "styled-components";
+const StyledDiv = styled.div`
+  border: 1px solid red;
+  .link {
+    font-size: 16px;
+  }
+`;
 export default class StylistProfile extends Component {
   state = { stylist: {} };
   componentDidMount() {
@@ -27,7 +32,7 @@ export default class StylistProfile extends Component {
     const { stylist } = this.state;
     console.log("picture", stylist.profile_photo);
     return (
-      <div className="box">
+      <StyledDiv className="container">
         <div>
           {" "}
           <div className="stylist-card-img">
@@ -55,12 +60,14 @@ export default class StylistProfile extends Component {
           </div>
           <GeoMap id={this.props.match.params.id} />
         </div>
-        <Link to={`/stylists/${stylist.id}/pictures`}>View pictures</Link>
+        <Link className="link" to={`/stylists/${stylist.id}/pictures`}>
+          View pictures
+        </Link>
         <Route
           path="/stylists/:id/pictures"
           render={props => <PictureList {...props} />}
         />
-      </div>
+      </StyledDiv>
     );
   }
 }

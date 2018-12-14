@@ -9,8 +9,8 @@ import Home from "./components/Home";
 import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
 import MyProfile from "./components/Dashboard/MyProfile";
-import StylistEditForm from './components/Forms/StylistEditForm';
-import Upload from './components/Dashboard/Pictures/Upload';
+import StylistEditForm from "./components/Forms/StylistEditForm";
+import Upload from "./components/Dashboard/Pictures/Upload";
 // font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -34,7 +34,6 @@ const StyledApp = styled.div`
     text-align: center;
     font-size: 2.8rem;
     margin: 20px 0 50px;
-  
   }
 
   .message {
@@ -60,10 +59,7 @@ export default class App extends Component {
         <Header />
         <NavBar handleLogOut={this.props.handleLogOut} />
         <h1 className="welcome">Welcome, {this.state.username}!</h1>
-        <Route
-          path="/home"
-          render={props => <Home {...props} />}
-        />
+        <Route path="/home" render={props => <Home {...props} />} />
         <Route
           exact
           path="/stylists"
@@ -76,7 +72,8 @@ export default class App extends Component {
         />
 
         <Route
-          exact path="/profile/:id"
+          exact
+          path="/profile/:id"
           render={props => <MyProfile {...props} />}
         />
 
