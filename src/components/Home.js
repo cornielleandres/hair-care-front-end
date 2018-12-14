@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Image from './Image';
 import axios from 'axios';
 import styled from "styled-components";
