@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledNavBar = styled.nav`
   display: flex;
@@ -10,19 +10,20 @@ const StyledNavBar = styled.nav`
   width: 100%;
   padding: 0 0 30px;
 
-  a, button {
+  a,
+  button {
     border: 2px solid #f9899e;
-      border-radius: 15px;
-      background: #1d0b32;
-      color: #f9899e;
-      font-size: 1.8rem;
-      font-family: 'Muli';
-      padding: 10px 20px;
-      cursor: pointer;
-      text-decoration: none;
+    border-radius: 15px;
+    background: #1d0b32;
+    color: #f9899e;
+    font-size: 1.8rem;
+    font-family: "Muli";
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
 
     &:hover {
-      transform: scale(1.1,1.1);
+      transform: scale(1.1, 1.1);
       background-color: #4947e5;
     }
   }
@@ -35,10 +36,12 @@ const StyledNavBar = styled.nav`
 const NavBar = props => {
   return (
     <StyledNavBar>
-        <NavLink to="/home">Home</NavLink>
-        <NavLink to="/stylists">Stylists</NavLink>
-        <button onClick={props.handleLogOut}>Log Out</button>
-        <NavLink to={`/profile/${localStorage.getItem("userID")}`}>Profile</NavLink>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/stylists">Stylists</NavLink>
+      <NavLink to={`/profile/${localStorage.getItem("userID")}`}>
+        Profile
+      </NavLink>
+      <button onClick={props.handleLogOut}>Log Out</button>
     </StyledNavBar>
   );
 };

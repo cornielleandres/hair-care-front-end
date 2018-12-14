@@ -50,24 +50,16 @@ const ProfileCard = props => {
         <h4>{stylist.address}</h4>
       </div>
       <div className="stylist-info">
-        <span>Phone:&nbsp;</span>
-        <h4>{stylist.phone_number}</h4>
+        <span>City:&nbsp;</span>
+        <h4>{stylist.city}</h4>
       </div>
       <div className="stylist-info">
-        <span>Average Cost:&nbsp;</span>
-        <h4>{stylist.average_cost}</h4>
+        <span>State:&nbsp;</span>
+        <h4>{stylist.state}</h4>
       </div>
       <div className="stylist-info">
-        <span>Average Rating:&nbsp;</span>
-        <h4>{stylist.rating}</h4>
-      </div>
-      <div className="stylist-info">
-        <span>Bio:&nbsp;</span>
-        <h4>description</h4>
-      </div>
-      <div className="stylist-info">
-        <span>Social:&nbsp;</span>
-        <h4>{stylist.social_network_link}</h4>
+        <span>Zip:&nbsp;</span>
+        <h4>{stylist.zip}</h4>
       </div>
     </StyledProfileCard>
   );

@@ -30,6 +30,7 @@ class StylistSignUpForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <input type="text" name="profile_photo" />
           <input
             name="first_name"
             value={this.state.username}
