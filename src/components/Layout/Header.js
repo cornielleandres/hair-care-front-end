@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
+width: 100%;
+background: #1d0b32;
+
 	h1 {
 		font-size: 4rem;
 		text-align: center;
 		padding: 20px;
 		font-family: 'Fredoka One';
-		color: #1d0b32;
+		color: #f9899e;
+		margin: 20px;
 	}
 `;
 
