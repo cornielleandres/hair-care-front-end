@@ -24,7 +24,6 @@ img {
 `;
 
 const Image = ({picture}) => {
-  console.log('IMAGE', picture)
   return (
     <StyledHomeImgContainer className="home-img-container">
       <img
