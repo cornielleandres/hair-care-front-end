@@ -3,34 +3,37 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNavBar = styled.nav`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-items: center;
+background: #1d0b32;
+width: 100%;
+padding: 0 0 30px;
+
+a,
+button {
+  border: 2px solid #f9899e;
+  border-radius: 15px;
   background: #1d0b32;
-  width: 100%;
-  padding: 0 0 30px;
+  color: #f9899e;
+  font-size: 1.8rem;
+  font-family: "Muli";
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px 10px;
 
-  a,
-  button {
-    border: 2px solid #f9899e;
-    border-radius: 15px;
-    background: #1d0b32;
-    color: #f9899e;
-    font-size: 1.8rem;
-    font-family: "Muli";
-    padding: 10px 20px;
-    cursor: pointer;
-    text-decoration: none;
-
-    &:hover {
-      transform: scale(1.1, 1.1);
-      background-color: #4947e5;
-    }
+  &:hover {
+    transform: scale(1.1, 1.1);
+    background-color: #4947e5;
   }
+}
 
-  a {
-    padding: 12px 20px;
+a {
+  padding: 12px 20px;
   }
+}
 `;
 
 const NavBar = props => {

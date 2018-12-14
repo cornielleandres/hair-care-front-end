@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+
+const StyledStylistProfileForm = styled.form`
+
+`;
 
 export default class MyProfile extends Component {
   state = {
@@ -59,7 +63,7 @@ export default class MyProfile extends Component {
       );
     } else {
       return(
-        <form onSubmit = {this.handleSubmit}>
+        <StyledStylistProfileForm onSubmit = {this.handleSubmit}>
           <h2>Create your stylist profile</h2>
           <input
             name = 'first_name'
@@ -104,7 +108,7 @@ export default class MyProfile extends Component {
             value = {this.state.stylist.profile_photo}
           />
           <button>Submit</button>
-        </form>
+        </StyledStylistProfileForm>
       );
     }
   }
