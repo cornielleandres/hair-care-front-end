@@ -33,7 +33,16 @@ export default class MyProfile extends Component {
     const headers = { headers: { Authorization: `${token}` } };
     Axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem('userID')}`, { ...this.state.stylist }, headers)
-      .then(res => {/* do nothing */})
+      .then(res => {
+        Axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem("userID")}`)
+          .then(res => {
+            if (res.data.length) {
+              this.setState({ exists: true, stylist: res.data[0] });
+            }
+          })
+          .catch(err => console.log(err.response))
+      })
       .catch(err => console.log(err.response))
   }
   componentDidMount() {
