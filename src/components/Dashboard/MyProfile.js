@@ -16,6 +16,7 @@ export default class MyProfile extends Component {
       city: '',
       state: '',
       zip: '',
+      profile_photo: '',
     },
     exists: false,
   };

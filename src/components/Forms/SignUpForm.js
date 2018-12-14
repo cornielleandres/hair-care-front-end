@@ -159,6 +159,7 @@ class SignUpForm extends Component {
           password
         })
           .then(res => {
+            localStorage.setItem("userID", res.data.id);
             localStorage.setItem("userToken", res.data.token);
             localStorage.setItem("hairCareUsername", username);
             this.props.handleLogIn();
