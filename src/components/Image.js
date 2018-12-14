@@ -15,7 +15,9 @@ img {
 }
 `;
 
-const Image = ({ picture }) => {
+const Image = (props) => {
+  console.log('IMAGE', props)
+  const {picture} = props;
   return (
     <StyledHomeImgContainer className="home-img-container">
       <img

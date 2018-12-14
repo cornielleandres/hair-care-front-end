@@ -9,7 +9,8 @@ import Home from "./components/Home";
 import Stylists from "./components/Dashboard/Stylists.js";
 import StylistProfile from "./components/Dashboard/Profiles/StylistProfile";
 import MyProfile from "./components/Dashboard/MyProfile";
-import StylistEditForm from './components/Forms/StylistEditForm'
+import StylistEditForm from './components/Forms/StylistEditForm';
+import Upload from './components/Dashboard/Pictures/Upload';
 // font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -82,6 +83,11 @@ export default class App extends Component {
         <Route
           path="/profile/:id/edit"
           render={props => <StylistEditForm {...props} />}
+        />
+
+        <Route
+          path="/profile/:id/upload"
+          render={props => <Upload {...props} />}
         />
       </StyledApp>
     );

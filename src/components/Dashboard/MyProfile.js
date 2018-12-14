@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
+import Image from '../Image';
 
 const StyledStylistProfileForm = styled.form`
 display: flex;
@@ -61,13 +62,15 @@ export default class MyProfile extends Component {
       profile_photo: '',
     },
     exists: false,
+    pictures: [],
   };
   handleChange = e => {
     this.setState({
+      ...this.state,
       stylist: {
         ...this.state.stylist,
         [e.target.name]: e.target.value
-      }
+      },
     });
   }
   handleSubmit = e => {
@@ -81,7 +84,7 @@ export default class MyProfile extends Component {
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem("userID")}`)
           .then(res => {
             if (res.data.length) {
-              this.setState({ exists: true, stylist: res.data[0] });
+              this.setState({ ...this.state, exists: true, stylist: res.data[0] });
             }
           })
           .catch(err => console.log(err.response))
@@ -89,17 +92,30 @@ export default class MyProfile extends Component {
       .catch(err => console.log(err.response))
   }
   componentDidMount() {
+    const token = localStorage.getItem("userToken");
+		const headers = { headers: { Authorization: `${token}` } };
     Axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/stylists/${localStorage.getItem("userID")}`)
       .then(res => {
         if (res.data.length) {
-          this.setState({ exists: true, stylist: res.data[0] });
+          this.setState({ ...this.state, exists: true, stylist: res.data[0] }, () => {
+            Axios
+              .get(`${process.env.REACT_APP_BACKEND_URL}/api/pictures/stylist/${localStorage.getItem("userID")}`, headers)
+              .then(res => {
+                console.log('THIS USERS PICS', res.data)
+                this.setState({
+                  ...this.state,
+                  pictures: res.data,
+                }, () => console.log('new state in pics', this.state));
+              })
+              .catch(err => console.log(err.response))
+          });
         }
       })
       .catch(err => console.log(err.response))
   }
   render() {
-    const { exists, stylist } = this.state;
+    const { exists, stylist, pictures } = this.state;
     if (exists) {
       return(
         <div>
@@ -112,6 +128,19 @@ export default class MyProfile extends Component {
           <p>Zip: {stylist.zip}</p>
 
           <Link to = {`/profile/${localStorage.getItem('userID')}/edit`}>Edit Profile</Link>
+
+          <Link to = {`/profile/${localStorage.getItem('userID')}/upload`}>Upload picture</Link>
+
+          <p>{stylist.first_name}'s pictures</p>
+
+          {
+            pictures.length <= 0
+            ?
+            <p>You haven't uploaded any pictures yet.</p>
+            :
+            pictures.map((picture, i) => <Image key = { i } picture = { picture } />)
+          }
+
         </div>
       );
     } else {
