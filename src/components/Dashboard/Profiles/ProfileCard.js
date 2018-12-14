@@ -15,7 +15,7 @@ width: 325px;
 background: #1d0b32;
 
 
-  img {
+  .profile-card-photo {
     border-radius: 15px;
     max-width: 300px;
     max-height: 300px;
@@ -53,7 +53,7 @@ const ProfileCard = props => {
   const { stylist } = props;
   return (
     <StyledProfileCard>
-        <img src={stylist.profile_photo} alt={stylist.first_name} />
+        <img className = 'profile-card-photo' src={stylist.profile_photo} alt={stylist.first_name} />
       <div className="stylist-info">
         <span>Name:&nbsp;</span>
         <h4>{stylist.first_name}</h4>

@@ -9,7 +9,6 @@ const StyledProfileCardList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-
 `;
 
 const ProfileCardList = props => {

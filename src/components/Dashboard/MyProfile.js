@@ -5,19 +5,20 @@ import styled from "styled-components";
 import Image from '../Image';
 
 const StylistProfileComp = styled.div`
-display: flex;
-flex-wrap: wrap;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-background: #1d0b32;
-width: 325px;
-border-radius: 15px;
-border: 5px solid #f9899e;
-padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: #1d0b32;
+  width: 325px;
+  border-radius: 15px;
+  border: 5px solid #f9899e;
+  padding: 20px;
 
-  img {
+  .profile-photo {
     max-width: 300px;
+    max-height: 300px;
     border-radius: 15px;
     margin: 0 auto;
     margin-bottom: 15px;
@@ -25,15 +26,15 @@ padding: 20px;
 
   .my-profile-info {
     display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
-  padding: 0 15px;
+    align-items: baseline;
+    justify-content: flex-start;
+    padding: 0 15px;
 
-  span {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #f9899e;
-  }
+    span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #f9899e;
+    }
   }
 
   a, p {
@@ -169,7 +170,7 @@ export default class MyProfile extends Component {
     if (exists) {
       return (
         <StylistProfileComp>
-          <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
+          <img className = 'profile-photo' src={stylist.profile_photo} alt={`${stylist.first_name}`} />
           <div className="my-profile-info">
             <span>First Name:&nbsp;</span> <p>{stylist.first_name}</p>
           </div>
