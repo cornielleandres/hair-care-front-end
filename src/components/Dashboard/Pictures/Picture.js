@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Comments from "./CommentSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentSection from "./CommentSection";
 import axios from "axios";

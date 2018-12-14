@@ -1,6 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import ProfileCardList from "./Profiles/ProfileCardList";
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+
+// Action creators
+import { getStylists } from "../../store/actions/index.js";
 
 const StyledStylists = styled.div`
   width: 80%;
@@ -14,16 +18,29 @@ const StyledStylists = styled.div`
   }
 `;
 
-const Stylists = props => {
-  return (
-    <StyledStylists>
-      <div>
-      <h1 className="stylists">Stylists</h1>
-      </div>
-      
-      <ProfileCardList {...props} />
-    </StyledStylists>
-  );
+class Stylists extends Component {
+  componentDidMount() {
+    this.props.getStylists(localStorage.getItem("userToken"));
+  }
+  render() {
+    return (
+      <StyledStylists>
+        <div>
+        <h1 className="stylists">Stylists</h1>
+        </div>
+        
+        <ProfileCardList {...this.props} />
+      </StyledStylists>
+    );
+  }
 };
 
-export default Stylists;
+
+const mapStateToProps = state => ({
+  stylists: state.stylists
+});
+
+export default connect(
+  mapStateToProps,
+  { getStylists }
+)(Stylists);

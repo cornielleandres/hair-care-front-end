@@ -48,7 +48,7 @@ const ProfileCard = props => {
   return (
     <StyledProfileCard>
       <div className="stylist-card-img">
-        <img src={stylist.profile_photo} alt="picture" />
+        <img src={stylist.profile_photo} alt={`${stylist.first_name}`} />
       </div>
 
       <div className="stylist-info">
