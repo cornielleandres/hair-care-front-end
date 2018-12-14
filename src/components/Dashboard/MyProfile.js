@@ -53,6 +53,16 @@ const StylistProfileComp = styled.div`
     margin: 0 auto;
     padding-top: 20px;
   }
+  .edit-upload-btn {
+    border-radius: 15px;
+    border: 2px solid #f9899e;
+    padding: 10px;
+    background: #1d0b32;
+    :hover {
+      background: #f9899e;
+      color: #1d0b32;
+    }
+  }
 `;
 
 const StyledStylistProfileForm = styled.form`
@@ -95,7 +105,7 @@ const StyledStylistProfileForm = styled.form`
     cursor: pointer;
 
     :hover {
-      transform: scale(1.1, 1.1);
+      transform: scale(1.1);
       background-color: #4947e5;
     }
   }
@@ -222,11 +232,17 @@ export default class MyProfile extends Component {
             <span>Zip:&nbsp;</span> <p>{stylist.zip}</p>
           </div>
 
-          <Link to={`/profile/${localStorage.getItem("userID")}/edit`}>
+          <Link
+            className="edit-upload-btn"
+            to={`/profile/${localStorage.getItem("userID")}/edit`}
+          >
             Edit Profile
           </Link>
 
-          <Link to={`/profile/${localStorage.getItem("userID")}/upload`}>
+          <Link
+            className="edit-upload-btn"
+            to={`/profile/${localStorage.getItem("userID")}/upload`}
+          >
             Upload picture
           </Link>
 
