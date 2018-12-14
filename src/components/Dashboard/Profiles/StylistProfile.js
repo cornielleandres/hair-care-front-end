@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import PictureList from "../Pictures/PictureList";
 import axios from "axios";
-
 import GeoMap from "./GeoMap.js";
 
 export default class StylistProfile extends Component {

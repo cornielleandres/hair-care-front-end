@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentSection from "./CommentSection";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  border: 1px solid red;
+  // display: flex;
+`;
+const StyledCommentSection = styled.div`
+  border: 1px solid blue;
+  display: flex;
+`;
 class Picture extends Component {
   state = {
     comment: "",
@@ -83,9 +93,8 @@ class Picture extends Component {
     this.getPictureLikes();
   }
   render() {
-    // console.log("likes", this.props);
     return (
-      <div className="box">
+      <StyledDiv>
         <img
           src={
             this.props.picture.picture ||
@@ -96,11 +105,13 @@ class Picture extends Component {
         <p onClick={this.handleLikes}>
           <FontAwesomeIcon icon="heart" /> {this.state.likes}
         </p>
-        <CommentSection
-          comments={this.state.comments}
-          picture={this.props.picture.id}
-          getAllPictureComments={this.getAllPictureComments}
-        />
+        <StyledCommentSection>
+          <CommentSection
+            comments={this.state.comments}
+            picture={this.props.picture.id}
+            getAllPictureComments={this.getAllPictureComments}
+          />
+        </StyledCommentSection>
         <form onSubmit={this.addComments}>
           <input
             name="comment"
@@ -110,7 +121,7 @@ class Picture extends Component {
             value={this.state.comment}
           />
         </form>
-      </div>
+      </StyledDiv>
     );
   }
 }
