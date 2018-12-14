@@ -5,12 +5,12 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  border: 1px solid red;
-  // display: flex;
+  border: 1px solid black;
+  width: 100%;
 `;
 const StyledCommentSection = styled.div`
-  border: 1px solid blue;
   display: flex;
+  justify-content: center;
 `;
 class Picture extends Component {
   state = {
